@@ -1,5 +1,21 @@
 class BookingsController < ApplicationController
-    before_action :set_repair, only: [:new, :create]
+  before_action :set_repair, only: [:new, :create]
+
+  def show
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    # for geocode
+    @customer_marker = {
+        lat: 52.5200,
+        lng: 13.4050
+    }
+
+    @mechanic_marker = {
+        lat: 52.4125,
+        lng: 12.5316
+    }
+    @markers = [@customer_marker, @mechanic_marker]
+  end
 
     def new
         #  GET /repairs/1/bookings/new
@@ -21,13 +37,13 @@ class BookingsController < ApplicationController
         end
     end
 
-    private
+  private
 
     def booking_params
         params.require(:booking).permit(:repair_id, photos: [])
     end
 
-    def set_repair
-        @repair = Repair.find(params[:repair_id])
-    end
+  def set_repair
+    @repair = Repair.find(params[:repair_id])
+  end
 end
