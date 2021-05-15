@@ -1,0 +1,18 @@
+.btn-booking {
+    color: white;
+    padding: 8px 24px;
+    border-radius: 10px;
+    background: $parple;
+    // transition: width 0.4s ease-in-out;
+    transition: background 0.3s ease;
+    display: flex;
+}
+
+.upload-photo {
+    border: 1px solid #d3d3d3;
+    padding: 16px 24px;
+    cursor: pointer;
+    font-weight: 500;
+    background: white;
+    border-radius: 10px;
+  }
