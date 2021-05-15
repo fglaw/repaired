@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_095855) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.boolean "user_machanic"
+    t.boolean "user_mechanic", default: false
     t.string "current_location"
     t.integer "rating"
     t.integer "level"

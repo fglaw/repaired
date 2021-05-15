@@ -19,6 +19,6 @@ class BookingsController < ApplicationController
     private
 
     def booking_params
-        params.require(:booking).permit(:location, :repair_id, :user_id, :photos: [])
+        params.require(:booking).permit(:location, :repair_id, :user_id, photos: [])
     end
 end
