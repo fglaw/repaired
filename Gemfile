@@ -28,13 +28,20 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+# Authentication
 gem 'devise'
+# Authorization
+gem 'pundit'
+
 gem 'dotenv-rails', groups: %i[development test]
 gem 'cloudinary', '~> 1.16.0'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
+
+
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
