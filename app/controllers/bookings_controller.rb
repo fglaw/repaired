@@ -4,15 +4,15 @@ class BookingsController < ApplicationController
     def new
         #  GET /repairs/1/bookings/new
         @booking = Booking.new
-        # authorize @booking
+        authorize @booking
     end
 
     def create
         #  POST /repairs/1/bookings
         @booking = Booking.new(booking_params)
+        authorize @booking
         @booking.repair = @repair
         @booking.user = current_user
-        authorize @booking
         if @booking.save!
             # for now redirect to homepage
             redirect_to root_path notice: 'Booking was successfully created'

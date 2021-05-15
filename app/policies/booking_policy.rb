@@ -14,7 +14,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    !user.user_mechanic
   end
 
   def update?
