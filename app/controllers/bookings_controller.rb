@@ -39,9 +39,9 @@ class BookingsController < ApplicationController
 
   private
 
-  def booking_params
-    params.require(:booking).permit(:location, :repair_id, :user_id, photos: [])
-  end
+    def booking_params
+        params.require(:booking).permit(:repair_id, photos: [])
+    end
 
   def set_repair
     @repair = Repair.find(params[:repair_id])
