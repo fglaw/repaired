@@ -3,10 +3,10 @@
 
 
 <% if current_user.user_mechanic %>
-    <%= render 'components/mechanic_dashboard'  %>
+    <%= render 'components/mechanic_dashboard', bookings: @mechanic_bookings  %>
 
     <% else %>
-        <%= render 'components/user_dashboard'  %>
+        <%= render 'components/user_dashboard', bookings: @user_bookings  %>
 
 <% end %>
 
