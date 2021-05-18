@@ -32,6 +32,7 @@ mechanic = User.create!(
 
 puts "Creating repair 1"
 repair1 = Repair.create!(
+    repair_type: 'Flat Tyre',
     price: 12,
     duration: 20,
     level: 1
