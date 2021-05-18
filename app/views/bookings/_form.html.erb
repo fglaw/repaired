@@ -4,7 +4,9 @@
       <div class="form-group">
         <%= f.label :title, 'Details of your issue' %>
         <div id="photos" class="mb-3">
+          <%= f.input :location %>
           <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none hidden', id: 'photos-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload photos'  %>
+          <%= f.association :mechanic %>
           <%= image_tag "", width: 300, class: "hidden", id: "photos-preview" %>
         </div>
       </div>
