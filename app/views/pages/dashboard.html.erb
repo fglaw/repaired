@@ -1,0 +1,14 @@
+<div class="container text-center">
+<h2>Dashboard</h2>
+
+
+<% if current_user.user_mechanic %>
+    <%= render 'components/mechanic_dashboard'  %>
+
+    <% else %>
+        <%= render 'components/user_dashboard'  %>
+
+<% end %>
+
+
+</div>
