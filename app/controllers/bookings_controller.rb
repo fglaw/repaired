@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
         #  GET /repairs/1/bookings/new
         @booking = Booking.new
         authorize @booking
+        @booking.repair = @repair
     end
 
     def create
