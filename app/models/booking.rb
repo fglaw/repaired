@@ -5,4 +5,5 @@ class Booking < ApplicationRecord
   has_many_attached :photos
   has_many :reviews, dependent: :destroy
   validates :location, presence: true
+  STATUSES = [ "pending", "accepted", "declined" ]
 end
