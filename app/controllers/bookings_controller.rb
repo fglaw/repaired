@@ -3,7 +3,9 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @repair = Repair.find(params[:repair_id])
     authorize @booking
+    @review = Review.new
     # for geocode
     @customer_marker = {
         lat: 52.5200,
@@ -32,7 +34,7 @@ class BookingsController < ApplicationController
         @booking.user = current_user
         if @booking.save
             # for now redirect to homepage
-            redirect_to root_path notice: 'Booking was successfully created'
+            redirect_to repair_booking_path(@repair, @booking), notice: 'Booking was successfully created'
         else
             render :new
         end
@@ -44,7 +46,7 @@ class BookingsController < ApplicationController
         params.require(:booking).permit(:location, :repair_id, :mechanic_id, photos: [])
     end
 
-  def set_repair
-    @repair = Repair.find(params[:repair_id])
-  end
+    def set_repair
+      @repair = Repair.find(params[:repair_id])
+    end
 end

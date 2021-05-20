@@ -1,0 +1,19 @@
+<div class="card-booking-info">
+  <div>
+    <p class="text-muted">How was your experience?</p>
+    <%= simple_form_for([@booking, @review], remote: true) do |f| %>
+      <%= f.input :rating %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+
+  <div id="review" class="mt-4">
+      <% @booking.reviews.each do |review| %>
+        <p>Comment by <%= @booking.user.name %></p>
+        <% review.rating.times do %>
+          <i class="fas fa-star star-yellow"></i>
+        <% end %>
+      <% end %>
+  </div>
+
+</div>
