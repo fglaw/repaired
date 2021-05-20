@@ -1,29 +1,15 @@
 <div class="banner">
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="tagline d-flex mt-5">
-          <div class="align-self-center">
-            <h2>Map is here</h2>
-            <p>current location</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container py-5">
-      <div class="row">
-        <div class="col-6 m-auto">
-          <%# here render one corrensponding repair show page by repair_id%>
-          <h2>Flat Tire</h2>
-          <%#= render "repairs/show", repairs :@repairs %>
-          <%= render "form", booking: @booking %>
-        </div>
-      </div>
-    </div>
-    
+    <h2>Map is here</h2>
+    <p>current location</p>
   </div>
 </div>
+
+  <%# here render repir.type %>
+  <h2><%= @booking.repair.type %></h2>
+  <%#= render "repairs/show", repairs :@repairs %>
+  <%= render "form", booking: @booking %>
+
 
   
 

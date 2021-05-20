@@ -21,6 +21,7 @@ class BookingsController < ApplicationController
         #  GET /repairs/1/bookings/new
         @booking = Booking.new
         authorize @booking
+        @booking.repair = @repair
     end
 
     def create
@@ -29,7 +30,7 @@ class BookingsController < ApplicationController
         authorize @booking
         @booking.repair = @repair
         @booking.user = current_user
-        if @booking.save!
+        if @booking.save
             # for now redirect to homepage
             redirect_to root_path notice: 'Booking was successfully created'
         else
@@ -40,7 +41,7 @@ class BookingsController < ApplicationController
   private
 
     def booking_params
-        params.require(:booking).permit(:repair_id, photos: [])
+        params.require(:booking).permit(:location, :repair_id, :mechanic_id, photos: [])
     end
 
   def set_repair
