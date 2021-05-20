@@ -1,4 +1,14 @@
-<div class="card-booking-info">
-  <p class="text-muted">Customer information</p>
-  <p> <%= @booking.repair.price %> </p>
+<div class="row">
+  <div class="col">
+    <div class="p-3 d-flex justify-content-between">
+      <div class="d-flex ml-2">
+        <p class="text-muted mr-4"> <i class="fas fa-cog mr-2"></i><%= @booking.repair.repair_type %> </p>
+        <p class="text-muted"><i class="fas fa-wrench mr-2"></i><%= @booking.mechanic.name %> </p>
+      </div>
+      <div class="badge-status mr-2 d-flex align-items-center justify-content-center">
+        <p> <%= @booking.status %> </p>
+      </div>
+    </div>
+  </div>
 </div>
+
