@@ -1,1 +1,12 @@
+<% s = "" %>
+<% if bookings.length > 1 %>
+  <% s="s"%>
+<% end %>
+
 <h1>USER DATA</h1>
+
+You have <%= bookings.length %> booking<%=s%>:
+
+<% bookings.each do |booking| %>
+  <%= render 'components/user_booking_card', booking: booking %>
+<% end %>

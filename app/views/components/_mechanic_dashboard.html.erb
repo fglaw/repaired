@@ -1,1 +1,10 @@
 <h1>MECHA DATA</h1>
+<% s = "" %>
+<% if bookings.length > 1 %>
+  <% s="s"%>
+<% end %>
+You have <%= bookings.length %> booking<%=s%>:
+
+<% bookings.each do |booking| %>
+  <%= render 'components/mechanic_booking_card', booking: booking %>
+<% end %>
