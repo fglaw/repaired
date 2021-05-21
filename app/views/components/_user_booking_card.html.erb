@@ -1,16 +1,26 @@
-<div class="border-primary">
-
-  <div class="d-flex" >
+<div class="border border-secondary mt-3">
+  <%#  %>
+  <div class="d-flex flex-row bg-primary p-2" >
     <%# booking.repair.image %>
-    <div class="avatar"></div>
-    <%= booking.repair.repair_type %>
+    <img src="https://picsum.photos/200/200" alt="" class="avatar ml-3 mr-3">
+    <div class="d-flex align-items-center">
+      <strong>
+        <%= booking.repair.repair_type %>
+      </strong>
+    </div>
   </div>
-  <div></div>
-  <div>
-    <%# booking.mechanic.photo %>
-    <%= booking.mechanic.name %>
+  <%#mechanic name and picture%>
+  <div class="d-flex flex-row-reverse pt-2 pb-2">
+    <img src="https://picsum.photos/200/200" alt="" class="avatar ml-3 mr-3">
+    <div class="d-flex align-items-center">
+      <%= booking.mechanic.name %>
+    </div>
   </div>
-  <div>
-    map
+  <%# status and price %>
+  <div class="d-flex justify-content-between bg-secondary pr-3 pl-3 pt-2 pb-2">
+    <div class="bg-primary p-1"><%= booking.status %></div>
+    <div class="d-flex align-items-center">
+      <%= booking.repair.price %>€
+    </div>
   </div>
 </div>
