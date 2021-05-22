@@ -38,15 +38,15 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.repair = @repair
     @booking.user = current_user
-    if @booking.save
-        # for now redirect to homepage
+      if @booking.save
+        raise
         redirect_to repair_booking_path(@repair, @booking), notice: 'Booking was successfully created'
-    else
+      else
         render :new
+      end
     end
-  end
 
-  private
+    private
 
     def booking_params
         params.require(:booking).permit(:location, :repair_id, :mechanic_id, photos: [])
