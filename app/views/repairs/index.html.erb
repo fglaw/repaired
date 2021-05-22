@@ -1,21 +1,25 @@
-<div class="d-flex justify-content-left">
+<div class="">
   <!-- Repairs Cards -->
-  <div class="repairs_index">
+  <div class="d-flex flex-wrap">
     <% @repairs.each do |repair| %>
-        <%= link_to repairs_path(repair), class:'text-decoration-none' do %>
-            <div class="m-4">
-              <div class="card-repair">
-                <% if repair.image_url.present? %>
-                  <img src="<%= repair.image_url %>" >
-                  <div class="card-repair-infos mt-1 p-3 d-flex flex-column card-link">
-                    <h2 class="mt-1"><%= repair.repair_type %></h2>
-                    <p>Duration: <%= repair.duration %> Minute</p>
-                    <p>Price: € <%= repair.price %></p>
-                    <p> Level: <%= repair.level %></p>
+        <%= link_to new_repair_booking_path(repair), class:'text-decoration-none' do %>
+          <div class="card-repair m-4">
+            <% if repair.image_url.present? %>
+              <img src="<%= repair.image_url %>" >
+              <div class="card-repair-infos mt-1 p-3 d-flex flex-column card-link">
+                <h2 class="mt-1"><%= repair.repair_type %></h2>
+                <p><i class="far fa-clock mr-2"></i> <%= repair.duration %> Minute</p>
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <% repair.level.times do %>
+                      <p> <i class="fas fa-cog mr-1 text-muted"></i></p>
+                    <% end %>
                   </div>
-                <% end %>
+                  <p>€ <%= repair.price %>,00</p>
+                </div>
               </div>
-            </div>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
   </div>
