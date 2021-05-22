@@ -1,0 +1,38 @@
+.card-repair {
+  overflow: hidden;
+  height: 150px;
+  width: 320px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.card-repair img {
+  height: 100%;
+  width: 150px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.card-repair h2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+  margin-bottom: 6px;
+}
+
+.card-repair p {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 0;
+  margin-top: 2px;
+  color: #000;
+}
+
+.card-repair .card-repair-infos {
+  padding: 1px;
+}
