@@ -21,12 +21,16 @@ const addMarkerToMap = (map) => {
   // if only one marker for customer is there
   if (mapElement.dataset.marker != null) {
     const marker = JSON.parse(mapElement.dataset.marker);
-    new mapboxgl.Marker()
+    new mapboxgl.Marker({
+      "color": "red",
+    })
     .setLngLat([ marker.lng, marker.lat ])
     .addTo(map);
 
     zoomMapToMap(map, marker);
-    pulsingMarker(map);
+    console.log(marker);
+    // pulsingMarker();
+    marker._color = 'red';
   }
   // else if take the markers from the view in `app/views/bookings/show.html.erb`
   else if (mapElement.dataset.markers != null) {
@@ -41,18 +45,22 @@ const addMarkerToMap = (map) => {
   }
 }
 
+let map;
+
 // Add Map to pages
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/mapbox/streets-v10',
+      center: [0, 0],
     });
 
     addMarkerToMap(map);
+    pulsingMarker(map, marker);
   }
 };
 

@@ -1,8 +1,5 @@
 <%= simple_form_for [@repair, @booking], html: {class: 'form'} do |f| %>
   <div class="form-group">
-      <%# I needed mechanic_id to be able to functionate booking new/create %>
-      <%= f.label :title, 'Choose mechanic' %>
-      <%= f.association :mechanic, :collection => User.where(user_mechanic: true), label: false %>
       <div id="photos" class="mb-3">
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none hidden', id: 'photos-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload photos'  %>
         <%= image_tag "", width: 300, class: "hidden", id: "photos-preview" %>
@@ -12,3 +9,4 @@
     <%= f.submit class: 'btn btn-flat' %>
   </div>
 <% end %>
+
