@@ -1,14 +1,7 @@
 <div class="container text-center">
-<h2>Dashboard</h2>
-
-
-<% if current_user.user_mechanic %>
-    <%= render 'components/mechanic_dashboard'  %>
-
-    <% else %>
-        <%= render 'components/user_dashboard'  %>
-
-<% end %>
-
-
+  <% if current_user.user_mechanic %>
+    <%= render 'components/mechanic_dashboard', bookings: @mechanic_bookings, active_booking: @active_booking, queued_bookings: @queued_bookings, pending_bookings: @pending_bookings, history: @history_bookings  %>
+  <% else %>
+    <%= render 'components/user_dashboard', active_bookings: @active_bookings, history: @history_bookings  %>
+  <% end %>
 </div>

@@ -1,1 +1,7 @@
-<h1>USER DATA</h1>
+<% active_bookings.each do |booking| %>
+  <%= render 'components/booking_card_md', booking: booking %>
+<% end %>
+<h4 class="mt-3" >history</h4>
+<% history.each do |booking| %>
+  <%= render 'components/booking_card_md', booking: booking %>
+<% end %>
