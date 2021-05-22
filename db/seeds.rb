@@ -6,6 +6,33 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'uri'
+require "faker"
+require "random-location"
+
+def mechanic?
+  rand(3) === 2
+end
+
+def set_status
+  i = rand(6)
+    if i == 0
+      "accepted"
+    elsif i == 1 
+      "pending"
+    else
+      "completed"
+    end  
+end
+
+def generate_booking_user
+  user_array = User.where(user_mechanic: false)
+  user_array[rand(user_array.length)]
+end
+
+def generate_booking_mechanic
+  user_array = User.where(user_mechanic: true)
+  user_array[rand(user_array.length)]
+end
 
 puts 'Cleaning database...'
 Booking.destroy_all
@@ -13,13 +40,19 @@ Repair.destroy_all
 User.destroy_all
 puts 'database is clean'
 
+user_photo_url = "https://kitt.lewagon.com/placeholder/users/random"
+
+
 puts "Creating user 1"
+
 customer = User.create!(
     email: "customer@user.com",
     password: "123456",
     name: "Hans Müller",
     user_mechanic: false
   )
+
+
 
 puts "Creating user 2"
 mechanic = User.create!(
@@ -69,8 +102,46 @@ Booking.create!(
     location: "current customer location",
     status: "accepted",
     user_id: customer.id,
-    repair_id: repair1.id,
+    repair_id: Repair.all.first.id,
     mechanic_id: mechanic.id
   )
 
+puts "attaching photos to users"
+
+User.all.each do |user|
+  file = URI.open(user_photo_url)
+  # user.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
+  user.save
+end
+
+puts "random user creation"
+20.times do 
+  User.create!(
+    email: Faker::Internet.email,
+    password: "123456",
+    name: Faker::Name.name ,
+    user_mechanic: mechanic?,
+    current_location: RandomLocation.near_by(52.5200, 13.4050, 10000),
+    level: rand(4),
+    rating: rand(6)
+  )
+end
+
+puts "random booking creation"
+
+60.times do
+  booking = Booking.new(
+    status: set_status,
+    location: RandomLocation.near_by(52.5200, 13.4050, 10000),
+    repair_id: Repair.all.sample.id
+  )
+  booking.user = generate_booking_user
+  booking.mechanic = generate_booking_mechanic
+  booking.save
+  puts booking
+end
+
 puts 'Seed complete'
+# https://source.unsplash.com/800x600/?broke,bike
+
+
