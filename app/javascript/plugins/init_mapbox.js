@@ -9,6 +9,12 @@ const zoomMapToMap = (map, marker) => {
   map.fitBounds(bounds, { padding: 0, maxZoom: 15, duration: 0 });
 }
 
+const fitMapToMarkers = (map, markers) => {
+  const bounds = new mapboxgl.LngLatBounds();
+  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+  map.fitBounds(bounds, { padding: 175, maxZoom: 15, duration: 0 });
+};
+
 // Add Marker to the map: for booking_new page and show page
 const addMarkerToMap = (map) => {
   const mapElement = document.getElementById('map');
@@ -30,6 +36,8 @@ const addMarkerToMap = (map) => {
     .setLngLat([ marker.lng, marker.lat ])
     .addTo(map);
     });
+
+    fitMapToMarkers(map, markers);
   }
 }
 

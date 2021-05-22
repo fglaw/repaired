@@ -1,25 +1,22 @@
-<div id="map"
+<div class="map-show">
+  <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+  </div>
+  <!-- info views for customer & mechanic -->
+  <% if !current_user.user_mechanic %>
+    <%= render 'show_customer' %>
+  <% else %>
+    <%= render 'show_mechanic' %>
+  <% end %>
 
-<div class="container">
-
-  <%= render 'show_customer' %>
-
-  <div class="badge-status">
-    <p> <%= @booking.status %> </p>
+  <div class="badge-time">
+    <h5>15</h5>
+    <p>min</p>
   </div>
 
   <%= render 'show_review' %>
 </div>
-
-
-<p> <%= @booking.location %> </p>
-
-  <p> Customer: <%= @booking.user.name %> </p>
-
-  <p> Mechanic: <%= @booking.mechanic.name %> </p>
 
 
