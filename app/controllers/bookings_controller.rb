@@ -3,7 +3,9 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @repair = Repair.find(params[:repair_id])
     authorize @booking
+    @review = Review.new
     # for geocode
     @customer_marker = {
         lat: 52.5200,
