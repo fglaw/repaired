@@ -2,7 +2,7 @@
   background: black;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 70px;
   padding: 0px 50px;
   color: white;
@@ -10,20 +10,20 @@
   bottom: 0;
   width: 100%;
 }
-.footer-links {
-  display: flex;
-  align-items: center;
-}
-.footer-links a {
-  color: white;
-  opacity: 0.75;
-  text-decoration: none;
-  font-size: 24px;
-  padding: 0px 10px;
-}
-.footer-links a:hover {
-  opacity: 1;
-}
+// .footer-links {
+//   display: flex;
+//   align-items: center;
+// }
+// .footer-links a {
+//   color: white;
+//   opacity: 0.75;
+//   text-decoration: none;
+//   font-size: 24px;
+//   padding: 0px 10px;
+// }
+// .footer-links a:hover {
+//   opacity: 1;
+// }
 .footer .fa-heart {
   color: #D23333;
 }
