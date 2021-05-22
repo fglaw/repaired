@@ -34,7 +34,8 @@ mechanic = User.create!(
 puts "Cleaning repairs"
 Repair.destroy_all
 puts "Creating repairs"
-Repair.create!(
+
+repair1 = Repair.create!(
     repair_type: 'Flat Tyre',
     price: 12,
     duration: 20,
