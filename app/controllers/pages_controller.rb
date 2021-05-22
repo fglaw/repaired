@@ -9,8 +9,8 @@ class PagesController < ApplicationController
       active_bookings = Booking.where("mechanic_id = ? AND status = ?", current_user.id, "accepted")
       @active_booking = active_bookings.first
       
-      if active_bookings.length >  1
-        active_bookings.shift
+      if active_bookings.kind_of?(Array)
+        active_bookings.delete_at(0)
         @queued_bookings = active_bookings
       else
         @queued_bookings = [] 
