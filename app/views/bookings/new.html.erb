@@ -1,15 +1,23 @@
-<div class="banner">
-  <div class="container">
-    <h2>Map is here</h2>
-    <p>current location</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-4 col-sm-offset-4">
+    
+      <p>Current location</p>
+      <div id="map"
+        style="width: 100%; height: 300px; mt-2"
+        data-marker="<%= @customer_marker.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
+      <div class="cards">
+        <div class="card-repair">
+          <h2><%= @booking.repair.repair_type %></h2>    
+        </div>
+        <div class="card-repair">
+          <%= render "form", booking: @booking %>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
-
-  <%# here render repir.type %>
-  <h2><%#= @booking.repair.type %></h2>
-  <%#= render "repairs/show", repairs :@repairs %>
-  <%= render "form", booking: @booking %>
-
-
-  
-
