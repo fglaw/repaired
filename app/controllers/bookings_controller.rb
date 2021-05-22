@@ -17,26 +17,32 @@ class BookingsController < ApplicationController
     @markers = [@customer_marker, @mechanic_marker]
   end
 
-    def new
-        #  GET /repairs/1/bookings/new
-        @booking = Booking.new
-        authorize @booking
-        @booking.repair = @repair
-    end
+  def new
+    #  GET /repairs/1/bookings/new
+    @booking = Booking.new
+    authorize @booking
+    @booking.repair = @repair
+    @booking.user = current_user
+    # for geocode
+    @customer_marker = {
+      lat: 52.5200,
+      lng: 13.4050
+    }
+  end
 
-    def create
-        #  POST /repairs/1/bookings
-        @booking = Booking.new(booking_params)
-        authorize @booking
-        @booking.repair = @repair
-        @booking.user = current_user
-        if @booking.save
-            # for now redirect to homepage
-            redirect_to root_path notice: 'Booking was successfully created'
-        else
-            render :new
-        end
+  def create
+    #  POST /repairs/1/bookings
+    @booking = Booking.new(booking_params)
+    authorize @booking
+    @booking.repair = @repair
+    @booking.user = current_user
+    if @booking.save
+        # for now redirect to homepage
+        redirect_to repair_booking_path(@repair, @booking), notice: 'Booking was successfully created'
+    else
+        render :new
     end
+  end
 
   private
 
@@ -44,7 +50,7 @@ class BookingsController < ApplicationController
         params.require(:booking).permit(:location, :repair_id, :mechanic_id, photos: [])
     end
 
-  def set_repair
-    @repair = Repair.find(params[:repair_id])
-  end
+    def set_repair
+      @repair = Repair.find(params[:repair_id])
+    end
 end
