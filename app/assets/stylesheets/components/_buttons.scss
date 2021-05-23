@@ -16,8 +16,11 @@
     background: white;
     border-radius: 10px;
     display: flex;
+    width: 320px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
   }
-
 
 .btn-submit {
   width: 100%;

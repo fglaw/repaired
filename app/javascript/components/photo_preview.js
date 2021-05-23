@@ -20,9 +20,9 @@ const previewImageOnFileSelect = () => {
           reader.onload = (event) => {
             var img = document.createElement('img');
             img.height = 200;
-            img.width = 400; 
+            img.width = 400;
             img.src = event.currentTarget.result;
-            document.getElementById('photos-preview').appendChild(img);
+            document.getElementById('photos').appendChild(img);
           }
           reader.readAsDataURL(input.files[i]);
           document.getElementById('photos-preview').classList.remove('hidden');
