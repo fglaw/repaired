@@ -36,3 +36,14 @@
 .card-repair .card-repair-infos {
   padding: 1px;
 }
+
+.card-booking {
+  overflow: hidden;
+  width: 320px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: 10px;
+}

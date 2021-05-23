@@ -2,7 +2,7 @@
   <div class="form-group">
       <div id="photos" class="mb-3">
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none hidden', id: 'photos-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload photos'  %>
-        <%= image_tag "", width: 300, class: "hidden", id: "photos-preview" %>
+        <%= image_tag "", class: "hidden", id: "photos-preview" %>
       </div>
   </div>
   <div class="mt-3">
