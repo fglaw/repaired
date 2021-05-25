@@ -44,6 +44,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: relative;
   margin: 10px;
+}
+
+#new_booking {
+  margin: 16px;
 }
