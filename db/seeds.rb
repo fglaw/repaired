@@ -50,18 +50,43 @@ Repair.create!(
   image_url: "https://images.unsplash.com/photo-1517263975512-e1e9172f466b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
 )
 Repair.create!(
-    repair_type: 'Unkonwn Issue',
-    price: 50,
-    duration: 60,
+    repair_type: 'Wheel repair',
+    price: 35,
+    duration: 40,
     level: 3,
-    image_url: "https://images.unsplash.com/photo-1551366612-efd0dd97e49c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
+    image_url: "https://images.unsplash.com/photo-1592222166121-93437e78d8d0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80",
   )
+  
+  repair1 = Repair.create!(
+    repair_type: 'Brake tuning',
+    price: 10,
+    duration: 15,
+    level: 1,
+    image_url: "https://images.unsplash.com/photo-1562486033-7066663ee15f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=582&q=80",
+    )
+
+Repair.create!(
+  repair_type: 'New bell & install',
+  price: 8,
+  duration: 5,
+  level: 1,
+  image_url: "https://images.unsplash.com/photo-1481106839235-a2c71e2564de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1652&q=80",
+  )
+      
 Repair.create!(
   repair_type: 'Health Check',
   price: 25,
   duration: 30,
   level: 2,
   image_url: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1504&q=80",
+)
+
+Repair.create!(
+  repair_type: 'Unkonwn Issue',
+  price: 50,
+  duration: 60,
+  level: 3,
+  image_url: "https://images.unsplash.com/photo-1551366612-efd0dd97e49c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2100&q=80",
 )
 puts "Created repairs"
 
