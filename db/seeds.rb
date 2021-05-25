@@ -107,6 +107,27 @@ Booking.create!(
     mechanic_id: mechanic.id
   )
 
+  puts "creating bookings for fabian fixit"
+
+  3.times do 
+    Booking.create!(
+      location: RandomLocation.near_by(52.5200, 13.4050, 10000),
+      status: "pending",
+      user_id: customer.id,
+      repair_id: Repair.all.sample.id,
+      mechanic_id: mechanic.id
+   )
+  end
+
+  10.times do
+    Booking.create!(
+      location: RandomLocation.near_by(52.5200, 13.4050, 10000),
+      status: "completed",
+      user_id: customer.id,
+      repair_id: Repair.all.sample.id,
+      mechanic_id: mechanic.id
+   )
+  end
 
 
 puts "random user creation"
