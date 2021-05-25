@@ -107,13 +107,7 @@ Booking.create!(
     mechanic_id: mechanic.id
   )
 
-puts "attaching photos to users"
 
-User.all.each do |user|
-  file = URI.open(user_photo_url)
-  # user.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
-  user.save
-end
 
 puts "random user creation"
 20.times do 
@@ -140,6 +134,14 @@ puts "random booking creation"
   booking.mechanic = generate_booking_mechanic
   booking.save
   puts booking
+end
+
+puts "attaching photos to users"
+
+User.all.each do |user|
+  file = URI.open(user_photo_url)
+  # user.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
+  user.save
 end
 
 puts 'Seed complete'
