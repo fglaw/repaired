@@ -1,9 +1,21 @@
+.card-main {
+  overflow: hidden;
+  background-color: white;
+}
+
+.card-main h1 {
+  font-weight: bold;
+  color: #000;
+  margin: 16px;
+  margin-top: 10px;
+  text-align: left;
+}
 .card-repair {
   overflow: hidden;
   height: 150px;
   width: 320px;
   border-radius: 8px;
-  background: white;
+  background: #F4F3F3;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
