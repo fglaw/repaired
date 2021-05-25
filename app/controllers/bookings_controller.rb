@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     # for geocode
     @customer_marker = {
         lat: 52.5200,
-        lng: 13.4050
+        lng: 13.4050,
     }
 
     @mechanic_marker = {
@@ -17,6 +17,7 @@ class BookingsController < ApplicationController
         lng: 13.401874
     }
     @markers = [@customer_marker, @mechanic_marker]
+
   end
 
   def new
