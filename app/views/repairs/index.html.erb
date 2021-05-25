@@ -1,5 +1,8 @@
-<div class="">
+<div class="card-main">
   <!-- Repairs Cards -->
+  <h1>
+    <p>What’s the problem?</p>
+  </h1>
   <div class="d-flex flex-wrap">
     <% @repairs.each do |repair| %>
         <%= link_to new_repair_booking_path(repair), class:'text-decoration-none' do %>
