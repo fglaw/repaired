@@ -1,0 +1,17 @@
+  <%= link_to repair_booking_path(booking.repair, booking), class: "no-text-deco" do %>
+  <div class="border bg-secondary shadow">
+    <%#  %>
+    <div class="d-flex bg-primary p-2 justify-content-between" >
+      <%# booking.repair.image %>
+      <div>
+        <strong>
+          <%= booking.repair.repair_type %>
+        </strong>
+      </div>
+      <div><%= booking.created_at %></div>
+      <div>
+        <%= booking.repair.price %>€
+      </div>
+    </div>
+  </div>
+<% end %>

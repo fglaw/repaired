@@ -46,6 +46,15 @@ class BookingsController < ApplicationController
       end
     end
 
+    def update
+      @booking = Booking.find(params[:id])
+      authorize @booking
+      params.each do |key,value|
+        Rails.logger.warn "Param #{key}: #{value}"
+      end
+      redirect_to dashboard_path
+    end
+
     private
 
     def booking_params
