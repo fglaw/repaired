@@ -8,6 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { initMapbox } from '../plugins/init_mapbox';
+import { previewImageOnFileSelect } from "../components/photo_preview";
 
 
 Rails.start()
@@ -30,4 +31,5 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initMapbox();
+  previewImageOnFileSelect();
 });

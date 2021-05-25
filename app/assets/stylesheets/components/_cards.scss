@@ -48,3 +48,18 @@
 .card-repair .card-repair-infos {
   padding: 1px;
 }
+
+.card-booking {
+  overflow: hidden;
+  width: 320px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+}
+
+#new_booking {
+  margin: 16px;
+}

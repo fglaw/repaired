@@ -2,13 +2,14 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { pulsingMarker } from './pulsing';
 
-// Zoom function
+// Zoom function on booking new page
 const zoomMapToMap = (map, marker) => {
   const bounds = new mapboxgl.LngLatBounds();
   bounds.extend([marker.lng, marker.lat])
   map.fitBounds(bounds, { padding: 0, maxZoom: 15, duration: 0 });
 }
 
+// Zoom function on booking show page
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
@@ -20,17 +21,9 @@ const addMarkerToMap = (map) => {
   const mapElement = document.getElementById('map');
   // if only one marker for customer is there
   if (mapElement.dataset.marker != null) {
-    const marker = JSON.parse(mapElement.dataset.marker);
-    new mapboxgl.Marker({
-      "color": "red",
-    })
-    .setLngLat([ marker.lng, marker.lat ])
-    .addTo(map);
+    marker = JSON.parse(mapElement.dataset.marker);
 
     zoomMapToMap(map, marker);
-    console.log(marker);
-    // pulsingMarker();
-    marker._color = 'red';
   }
   // else if take the markers from the view in `app/views/bookings/show.html.erb`
   else if (mapElement.dataset.markers != null) {
@@ -45,8 +38,6 @@ const addMarkerToMap = (map) => {
   }
 }
 
-let map;
-
 // Add Map to pages
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -56,12 +47,15 @@ const initMapbox = () => {
     map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
-      center: [0, 0],
     });
 
     addMarkerToMap(map);
     pulsingMarker(map, marker);
   }
 };
+
+// variables so that they can be used in another files
+let map;
+let marker;
 
 export { initMapbox };
