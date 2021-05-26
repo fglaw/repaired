@@ -49,13 +49,22 @@ class BookingsController < ApplicationController
     def update
       @booking = Booking.find(params[:id])
       authorize @booking
-      params.each do |key,value|
-        Rails.logger.warn "Param #{key}: #{value}"
+      if params["status"] == "declined"
+        
+        @booking.mechanic = random_mechanic
+      else
+      
+        @booking.status = params["status"]
       end
+      @booking.save
       redirect_to dashboard_path
     end
 
     private
+
+    def random_mechanic
+      User.where(user_mechanic: true).sample
+    end
 
     def booking_params
         params.require(:booking).permit(:repair_id, :mechanic_id, photos: [])
