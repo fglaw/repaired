@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
         who: 'mechanic'
     }
     @markers = [@customer_marker, @mechanic_marker]
+
   end
 
   def new
