@@ -26,3 +26,17 @@
     </div>
   </div>
 <% end %>
+<% if booking.status == "pending" %>
+  <div>
+    <%= link_to repair_booking_path(booking.repair, booking, status: "accepted"), method: :patch, class: "no-text-deco" do %>
+      <h6 class="text-success">accept</h6>
+    <% end %>
+    <%= link_to repair_booking_path(booking.repair, booking, status: "declined"), method: :patch, class: "no-text-deco" do %>
+      <h6 class="text-warning">decline</h6>
+    <% end %>
+  </div>
+<% elsif booking.status == "accepted" %>
+  <%= link_to repair_booking_path(booking.repair, booking, status: "completed"), method: :patch, class: "no-text-deco" do %>
+    <h6>mark as completed</h6>
+  <% end %>
+<% end %>

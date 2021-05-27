@@ -20,4 +20,8 @@ class BookingPolicy < ApplicationPolicy
   def update?
     return true
   end
+
+  def new?
+    true
+  end
 end
