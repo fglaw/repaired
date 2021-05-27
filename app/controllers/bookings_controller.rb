@@ -10,11 +10,13 @@ class BookingsController < ApplicationController
     @customer_marker = {
         lat: 52.5200,
         lng: 13.4050,
+        who: 'customer'
     }
 
     @mechanic_marker = {
         lat: 52.529614,
-        lng: 13.401874
+        lng: 13.401874,
+        who: 'mechanic'
     }
     @markers = [@customer_marker, @mechanic_marker]
 

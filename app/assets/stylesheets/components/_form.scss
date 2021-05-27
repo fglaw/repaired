@@ -9,3 +9,13 @@ img {
   border-radius: 30px;
   padding: 16px;
 }
+
+div.item {
+  display: inline-block;
+  *display: inline;
+  margin-right: 30px;
+}
+
+div.col-12 {
+  color: $parple;
+}
