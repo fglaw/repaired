@@ -139,7 +139,7 @@ puts "Created repairs"
 
 puts 'Creating booking 1'
 Booking.create!(
-    location: "RandomLocation.near_by(52.5200, 13.4050, 10000),",
+    location: RandomLocation.near_by(52.5200, 13.4050, 10000),,
     status: "accepted",
     user_id: customer.id,
     repair_id: Repair.all.first.id,

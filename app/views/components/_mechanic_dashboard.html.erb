@@ -1,10 +1,13 @@
-<h4 class="border border-primary p-3 mt-3">active repair</h4>
-<%= render 'components/booking_card_md', booking: @active_booking %>
+<div class="card mt-3 bg-dark border-primary">
+  <h4 class="p-3 mt-3 text-white">active repair</h4>
+  <%= render 'components/booking_card_md', booking: @active_booking %>
+</div>
+<%# Accordion %>
 <div class="" id="accordion">
-  <div class="card mt-3 rounded-0">
+  <div class="card mt-3 bg-dark border-primary">
     <div class="card-header p-0" id="headingOne">
       <h4 class="mb-0">
-        <button class="p-3 border border-primary collapsed w-100 no-text-deco" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
           queue  <i class="fas fa-angle-down"></i>
         </button>
       </h4>
@@ -12,16 +15,17 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
         <% @queued_bookings.each do |booking| %>
-          <%= render 'components/booking_card_md', booking: booking %>
+          <%= render 'components/pending_booking_card', booking: booking %>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="card mt-3 rounded-0">
+  <%# PENDING AKKORDEON %>
+  <div class="card mt-3 bg-dark border-primary">
     <div class="card-header p-0" id="headingTwo">
       <h4 class="mb-0">
-        <button class="p-3 border border-primary collapsed w-100 no-text-deco" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          pending requests  <i class="fas fa-angle-down"></i>
+        <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          new requests  <i class="fas fa-angle-down"></i>
         </button>
       </h4>
     </div>
@@ -32,10 +36,11 @@
         <% end %>      </div>
     </div>
   </div>
-  <div class="card mt-3 mb-3 rounded-0">
+  <%#TOTAL EARNINGS%>
+  <div class="card mt-3 bg-dark border-primary">
     <div class="card-header p-0" id="headingThree">
       <h4 class="mb-0">
-        <button class="p-3 border border-primary collapsed w-100 no-text-deco" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           total earnings  <i class="fas fa-angle-down"></i>
         </button>
       </h4>
