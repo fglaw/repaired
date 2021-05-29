@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { initMapbox } from '../plugins/init_mapbox';
 import { previewImageOnFileSelect } from "../components/photo_preview";
+import {dashboardMaps} from '../plugins/dashboard_maps';
 
 
 Rails.start()
@@ -27,9 +28,13 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
+
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initMapbox();
+  const maps = document.querySelectorAll(".map")
+  dashboardMaps(maps)
   previewImageOnFileSelect();
 });
