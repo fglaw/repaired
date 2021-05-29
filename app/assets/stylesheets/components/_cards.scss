@@ -45,13 +45,15 @@
   color: #000;
 }
 
-.card-repair .card-repair-infos {
-  padding: 1px;
-}
 .card-repair-show {
-  margin-top: 100px;
-  border-radius: 8px;
+  // margin-top: 100px;
+  border-radius: 14px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  img {
+    width: 100%;
+    border-radius: 14px 14px 0px 0px;
+    // padding: 16px;
+  }
 }
 
 .card-booking {
@@ -68,4 +70,8 @@
 #new_booking {
   margin: 16px;
   margin-top: 100px;
+}
+
+#text-lilac {
+  color: #C4BBFA;
 }

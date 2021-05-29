@@ -34,3 +34,16 @@
   background: lightgrey;
   color: grey;
 }
+
+.btn-lilac {
+  width: 100%;
+  padding: 8px 24px;
+  border-radius: 10px;
+  background: #C4BBFA;
+  transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: lightgrey;
+  color: grey;
+}
