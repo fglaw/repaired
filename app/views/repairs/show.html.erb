@@ -1,38 +1,88 @@
 <div class="container">
 
-  <div class="row">
-    <div class="col-12 mt-2">
-      <div class="d-flex justify-content-between m-3">
-        <p>you choose..</p>
-        <%= link_to ('<i class="fas fa-long-arrow-alt-left"></i>').html_safe, repairs_path %>
-      </div>
+  <%= link_to ('<i class="fas fa-long-arrow-alt-left mt-3"></i>').html_safe, repairs_path %>
+
+  <!-- stages 1,2,3 -->
+  <div class="row pl-3 pr-3">
+
+    <div class="col text-center">
+      <i class="fas fa-wrench"></i>
+      <p>issue</p>
     </div>
+
+    <div class="col align-self-center text-muted">
+      <i class="fas fa-ellipsis-h"></i>
+    </div>
+
+    <div class="col text-center text-muted">
+      <i class="fas fa-location-arrow"></i>
+      <p>location</p>
+    </div>
+
+    <div class="col align-self-center text-muted">
+      <i class="fas fa-ellipsis-h"></i>
+    </div>
+
+    <div class="col text-center text-muted">
+      <i class="far fa-images"></i>
+      <p>photos</p>
+    </div>
+
   </div>
 
-  <div class="cards justify-content-center">
-    <div class="card-repair-show mt-0">
-      <% if @repair.image_url.present? %>
-        <img src="<%= @repair.image_url %>" >
-        <div class="card-repair-infos mt-1 p-3 d-flex flex-column card-link">
-          <h2 class="mt-1"><%= @repair.repair_type %></h2>
-          <p><i class="far fa-clock mr-2"></i> <%= @repair.duration %> Minute</p>
-          <div class="d-flex justify-content-between">
-            <div class="d-flex">
-              <% @repair.level.times do %>
-                <p> <i class="fas fa-cog mr-1 text-muted"></i></p>
-              <% end %>
-            </div>
-            <p>€ <%= @repair.price %>,00</p>
+  <div class="d-flex justify-content-center pb-2">
+    <h4 id="text-lilac">Confirm your issue:</h4>
+  </div>
+
+
+  <div class="card-repair-show mt-0">
+
+    <% if @repair.image_url.present? %>
+      <img src="<%= @repair.image_url %>" >
+    <% end %>
+
+    <div class="p-4">
+      <div class="d-flex justify-content-center">
+        <h4><%= @repair.repair_type %></h4>
+      </div>
+
+
+      <div class="text-muted">
+
+        <div class="d-flex justify-content-center border-top pt-3">
+          <p class="mr-3">Issue complexity:</p>
+          <% @repair.level.times do %>
+            <p> <i class="mr-2 fas fa-cog mr-1 text-muted"></i></p>
+          <% end %>
+        </div>
+
+        <div class="border-top pt-3 pb-3">
+            <p class="text-center"> <i class="far fa-clock mr-2"></i><%= @repair.duration %> Minutes</p>
+          <div class="d-flex">
+            <span class="text-center">Approximately to complete this repair</span>
           </div>
         </div>
-      <% end %>
+
+        <div class="d-flex justify-content-center border-top pt-3">
+          <p>Gaurantee: 12 weeks</p>
+          <!-- <p>Within this timeframe if the issue repeats it will be fixed free of charge.</p> -->
+        </div>
+
+      </div>
+
+      <div class="border-top pt-3 d-flex justify-content-center">
+        <h5> Total cost:  € <%= @repair.price %>,00</h5>
+      </div>
+
     </div>
+
   </div>
 
- 
-  <div class="btn btn-flat btn-lg col-sm-3 mt-3 d-flex justify-content-center">
-    <%= link_to 'Continue', new_repair_booking_path(@repair), :class => "btn" %>
-  </div>
-  
+
+
+  <%= link_to repair_location_path(@repair) do %>
+    <button class="btn-lilac mt-3 mb-3">Continue</button>
+  <% end %>
+
 </div>
 

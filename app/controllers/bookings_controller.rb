@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_repair, only: [:new, :create]
 
+  def index
+    @bookings = policy_scope(Booking)
+  end
+
   def show
     @booking = Booking.find(params[:id])
     @repair = Repair.find(params[:repair_id])
@@ -53,10 +57,10 @@ class BookingsController < ApplicationController
       @booking = Booking.find(params[:id])
       authorize @booking
       if params["status"] == "declined"
-        
+
         @booking.mechanic = random_mechanic
       else
-      
+
         @booking.status = params["status"]
       end
       @booking.save
@@ -75,5 +79,9 @@ class BookingsController < ApplicationController
 
     def set_repair
       @repair = Repair.find(params[:repair_id])
+    end
+
+    def find_repair
+      @repair = Repair.find(params[:format])
     end
 end
