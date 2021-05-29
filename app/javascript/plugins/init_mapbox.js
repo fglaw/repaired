@@ -33,7 +33,7 @@ const addMarkerToMap = (map) => {
     zoomMapToMaker(map, marker);
   }
   // else if take the markers from the view in `app/views/bookings/show.html.erb`
-  else if (mapElement.dataset.markers != null) {
+  else if (mapElement.dataset.markers) {
     const markers = JSON.parse(mapElement.dataset.markers);
     console.log('markers', markers);
     
@@ -66,10 +66,12 @@ const addMarkerToMap = (map) => {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(map);
       }
-    
+      fitMapToMarkers(map, markers);
+      console.log('help', fitMapToMarkers(map, markers));
     });
-
-    fitMapToMarkers(map, markers);
+    console.log('map!', map);
+    console.log('help');
+   
   }
 }
 
@@ -194,6 +196,13 @@ const initMapbox = () => {
       // map.fitBounds(bounds, { padding: 0, maxZoom: 15, duration: 0 });
       // pulsingMarker(map, marker);
     addMarkerToMap(map);
+
+    map.addControl(new mapboxgl.GeolocateControl({
+      positionOptions: {
+      enableHighAccuracy: true
+      },
+      trackUserLocation: true
+      }));
   }
 };
 

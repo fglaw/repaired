@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import { initMapbox } from '../plugins/init_mapbox';
 import { previewImageOnFileSelect } from "../components/photo_preview";
+import { getLocation } from '../plugins/get_location';
 
 
 Rails.start()
@@ -32,4 +33,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initMapbox();
   previewImageOnFileSelect();
+  // getLocation();
 });
