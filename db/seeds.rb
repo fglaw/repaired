@@ -43,7 +43,7 @@ puts 'database is clean'
 user_photo_url = "https://kitt.lewagon.com/placeholder/users/random"
 
 puts "random user creation"
-20.times do 
+10.times do 
   User.create!(
     email: Faker::Internet.email,
     password: "123456",
@@ -61,7 +61,8 @@ customer = User.create!(
     email: "customer@user.com",
     password: "123456",
     name: "Hans Müller",
-    user_mechanic: false
+    user_mechanic: false, 
+    current_location: RandomLocation.near_by(52.5200, 13.4050, 10000)
   )
 
 
@@ -73,6 +74,7 @@ mechanic = User.create!(
     name: "Fabian Fixit",
     user_mechanic: true,
     level: 3,
+    current_location: RandomLocation.near_by(52.5200, 13.4050, 10000),
     rating: 4.8
   )
 
@@ -137,7 +139,7 @@ puts "Created repairs"
 
 puts 'Creating booking 1'
 Booking.create!(
-    location: "current customer location",
+    location: "RandomLocation.near_by(52.5200, 13.4050, 10000),",
     status: "accepted",
     user_id: customer.id,
     repair_id: Repair.all.first.id,
@@ -194,7 +196,7 @@ puts "attaching photos to users"
 
 User.all.each do |user|
   file = URI.open(user_photo_url)
-  # user.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
+  user.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
   user.save
 end
 

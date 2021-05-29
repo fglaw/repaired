@@ -1,9 +1,9 @@
   <%= link_to repair_booking_path(booking.repair, booking), class: "no-text-deco" do %>
   <div class="border bg-secondary shadow">
     <%#  %>
-    <div class="d-flex flex-row bg-primary p-2" >
+    <div class="d-flex flex-row bg-primary" >
       <%# booking.repair.image %>
-      <img src="https://picsum.photos/200/200" alt="" class="avatar ml-3 mr-3">
+      <img src=<%= booking.repair.image_url %> alt="" class="repair-pic p-0 ml-3 mr-3 mt-2 mb-2">
       <div class="d-flex align-items-center">
         <strong>
           <%= booking.repair.repair_type %>
@@ -12,9 +12,10 @@
     </div>
     <%#mechanic name and picture%>
     <div class="d-flex flex-row-reverse pt-2 pb-2">
-      <img src="https://picsum.photos/200/200" alt="" class="avatar ml-3 mr-3">
+      <%= cl_image_tag( booking.user.photo.key ,
+      width: 100, height: 100, crop: :thumb, gravity: :face, class: "repair-pic ml-3 mr-3")%>
       <div class="d-flex align-items-center">
-        <%= booking.mechanic.name %>
+        <%= booking.user.name %>
       </div>
     </div>
     <%# status and price %>
@@ -37,6 +38,6 @@
   </div>
 <% elsif booking.status == "accepted" %>
   <%= link_to repair_booking_path(booking.repair, booking, status: "completed"), method: :patch, class: "no-text-deco" do %>
-    <h6>mark as completed</h6>
+    <h6 class="mt-2 text-success">mark as completed</h6>
   <% end %>
 <% end %>

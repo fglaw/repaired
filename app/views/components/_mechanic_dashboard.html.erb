@@ -28,7 +28,7 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
         <% @pending_bookings.each do |booking| %>
-          <%= render 'components/booking_card_md', booking: booking %>
+          <%= render 'components/pending_booking_card', booking: booking %>
         <% end %>      </div>
     </div>
   </div>

@@ -18,6 +18,7 @@ class PagesController < ApplicationController
     
       
       @pending_bookings = Booking.where("mechanic_id = ? AND status = ?", current_user.id, "pending")
+      
       @history_bookings = Booking.where("mechanic_id = ? AND status = ?", current_user.id, "completed")
       @total_earnings = @history_bookings.map {|booking| booking.repair.price}.sum
 
