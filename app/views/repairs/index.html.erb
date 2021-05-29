@@ -5,7 +5,7 @@
   </h1>
   <div class="d-flex flex-wrap">
     <% @repairs.each do |repair| %>
-        <%= link_to new_repair_booking_path(repair), class:'text-decoration-none' do %>
+        <%= link_to repair_path(repair), class:'text-decoration-none' do %>
           <div class="card-repair m-4">
             <% if repair.image_url.present? %>
               <img src="<%= repair.image_url %>" >

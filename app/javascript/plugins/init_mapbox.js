@@ -53,11 +53,11 @@ const addMarkerToMap = (map) => {
       console.log('object_mechanic:', object);
 
       // change icon to bicycle
-      // var el = document.createElement('div');
-      // el.className = 'marker';
-      // console.log('element:', el);
+      var el = document.createElement('div');
+      el.className = 'marker';
+      console.log('element:', el);
 
-      new mapboxgl.Marker(object)
+      new mapboxgl.Marker(el)
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
     }
@@ -77,6 +77,7 @@ const initMapbox = () => {
     map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
+      attributionControl: false
     });
 
     addMarkerToMap(map);

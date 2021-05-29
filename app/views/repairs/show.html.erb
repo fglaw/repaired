@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 mt-2">
+      <div class="d-flex justify-content-between m-3">
+        <p>you choose..</p>
+        <%= link_to ('<i class="fas fa-long-arrow-alt-left"></i>').html_safe, repairs_path %>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards justify-content-center">
+    <div class="card-repair-show mt-0">
+      <% if @repair.image_url.present? %>
+        <img src="<%= @repair.image_url %>" >
+        <div class="card-repair-infos mt-1 p-3 d-flex flex-column card-link">
+          <h2 class="mt-1"><%= @repair.repair_type %></h2>
+          <p><i class="far fa-clock mr-2"></i> <%= @repair.duration %> Minute</p>
+          <div class="d-flex justify-content-between">
+            <div class="d-flex">
+              <% @repair.level.times do %>
+                <p> <i class="fas fa-cog mr-1 text-muted"></i></p>
+              <% end %>
+            </div>
+            <p>€ <%= @repair.price %>,00</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+ 
+  <div class="btn btn-flat btn-lg col-sm-3 mt-3 d-flex justify-content-center">
+    <%= link_to 'Continue', new_repair_booking_path(@repair), :class => "btn" %>
+  </div>
+  
+</div>
+
