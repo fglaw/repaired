@@ -1,0 +1,47 @@
+<div class="container">
+
+  <%= link_to ('<i class="fas fa-long-arrow-alt-left mt-3"></i>').html_safe, repair_path(@repair) %>
+
+  <!-- stages 1,2,3 -->
+  <div class="row pl-3 pr-3">
+
+    <div class="col text-center text-muted">
+      <i class="fas fa-wrench"></i>
+      <p>issue</p>
+    </div>
+
+    <div class="col align-self-center text-muted">
+      <i class="fas fa-ellipsis-h"></i>
+    </div>
+
+    <div class="col text-center">
+      <i class="fas fa-location-arrow"></i>
+      <p>location</p>
+    </div>
+
+    <div class="col align-self-center text-muted">
+      <i class="fas fa-ellipsis-h"></i>
+    </div>
+
+    <div class="col text-center text-muted">
+      <i class="far fa-images"></i>
+      <p>photos</p>
+    </div>
+
+  </div>
+
+    <h4 id="text-lilac">Confirm your current location</h4>
+
+  <div id="map"
+    style="width: 100%; height: 480px;"
+    data-marker="<%= @customer_marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+  <%= link_to new_repair_booking_path(@repair) do %>
+    <button class="btn-lilac mt-3 mb-3">Continue</button>
+  <% end %>
+
+  <%#= link_to 'Continue', new_repair_booking_path(@repair), :class => "btn" %>
+
+</div>

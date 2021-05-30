@@ -1,42 +1,28 @@
   <%= link_to repair_booking_path(booking.repair, booking), class: "no-text-deco" do %>
-  <div class="border bg-secondary shadow">
+  <div class="border bg-dark shadow">
     <%#  %>
-    <div class="d-flex flex-row bg-primary p-2" >
+    <div class="d-flex flex-row bg-primary" >
       <%# booking.repair.image %>
-      <img src="https://picsum.photos/200/200" alt="" class="avatar ml-3 mr-3">
-      <div class="d-flex align-items-center">
+      <img src=<%= booking.repair.image_url %> alt="" class="repair-pic p-0 ml-3 mr-3 mt-2 mb-2">
+      <div class="d-flex align-items-center justify-content-between flex-grow-1 mr-3">
         <strong>
           <%= booking.repair.repair_type %>
         </strong>
+        <div>
+          <%= booking.repair.price %>€
+        </div>
       </div>
     </div>
     <%#mechanic name and picture%>
-    <div class="d-flex flex-row-reverse pt-2 pb-2">
-      <img src="https://picsum.photos/200/200" alt="" class="avatar ml-3 mr-3">
+    <div class="d-flex text-white flex-row-reverse pt-2 pb-2">
+      <%= cl_image_tag( booking.user.photo.key ,
+      width: 100, height: 100, crop: :thumb, gravity: :face, class: "repair-pic ml-3 mr-3")%>
       <div class="d-flex align-items-center">
-        <%= booking.mechanic.name %>
-      </div>
-    </div>
-    <%# status and price %>
-    <div class="d-flex justify-content-between pr-3 pl-3 pt-2 pb-2">
-      <div class="bg-primary p-1"><%= booking.status %></div>
-      <div class="d-flex align-items-center">
-        <%= booking.repair.price %>€
+        <%= booking.user.name %>
       </div>
     </div>
   </div>
 <% end %>
-<% if booking.status == "pending" %>
-  <div>
-    <%= link_to repair_booking_path(booking.repair, booking, status: "accepted"), method: :patch, class: "no-text-deco" do %>
-      <h6 class="text-success">accept</h6>
-    <% end %>
-    <%= link_to repair_booking_path(booking.repair, booking, status: "declined"), method: :patch, class: "no-text-deco" do %>
-      <h6 class="text-warning">decline</h6>
-    <% end %>
-  </div>
-<% elsif booking.status == "accepted" %>
-  <%= link_to repair_booking_path(booking.repair, booking, status: "completed"), method: :patch, class: "no-text-deco" do %>
-    <h6>mark as completed</h6>
-  <% end %>
+<%= link_to repair_booking_path(booking.repair, booking, status: "completed"), method: :patch, class: "no-text-deco" do %>
+  <h6 class="mt-2 text-success">mark as completed</h6>
 <% end %>
