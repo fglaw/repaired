@@ -12,4 +12,8 @@ class RepairPolicy < ApplicationPolicy
   def show?
     return true
   end
+
+  def location?
+    return true
+  end
 end
