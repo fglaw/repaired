@@ -12,6 +12,7 @@ import { previewImageOnFileSelect } from "../components/photo_preview";
 import {dashboardMaps} from '../plugins/dashboard_maps';
 
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

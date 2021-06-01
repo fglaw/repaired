@@ -17,6 +17,7 @@ const addMarkerToMap = (map) => {
     console.log('markers', markers);
     
     markers.forEach((marker) => {
+
       new mapboxgl.Marker()
       .setLngLat([ marker.lat, marker.lon ])
       .addTo(map);
@@ -100,6 +101,7 @@ const initMapbox = () => {
         localStorage.setItem("current_location",position);
         console.log("I saved it")
       });
+
   }
 };
 
