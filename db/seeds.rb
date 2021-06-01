@@ -9,6 +9,8 @@ require 'uri'
 require "faker"
 require "random-location"
 
+ 
+
 def mechanic?
   rand(3) === 2
 end
@@ -74,7 +76,7 @@ mechanic = User.create!(
     name: "Fabian Fixit",
     user_mechanic: true,
     level: 3,
-    current_location: "[52.592879, 13.431700]",
+    current_location: [52.592879, 13.431700],
     rating: 4.8
   )
 
