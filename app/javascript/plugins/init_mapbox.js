@@ -76,17 +76,15 @@ const initMapbox = () => {
         }
         // add mechanics markers
         else {
-          document.getElementById('search').addEventListener('click', function() {
             map.flyTo({
               center: [
                 customer_marker[0], 
                 customer_marker[1] 
               ],
-              zoom: 11,
+              zoom: 10,
               essential: true // this animation is considered essential with respect to prefers-reduced-motion
             });
             addMarkerToMap(map);
-          });
         }
       };
 
