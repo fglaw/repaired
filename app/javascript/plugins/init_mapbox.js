@@ -1,13 +1,11 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { pulsingMarker } from './pulsing';
-
 
 // Zoom function on booking new page
 const zoomMapToMaker = (map, marker) => {
   const bounds = new mapboxgl.LngLatBounds();
   bounds.extend([marker.lng, marker.lat])
-  map.fitBounds(bounds, { padding: 0, maxZoom: 15, duration: 0 });
+  map.fitBounds(bounds, { padding: 0, maxZoom: 10, duration: 0 });
 }
 
 // Zoom function on booking show page
@@ -33,7 +31,7 @@ const addMarkerToMap = (map) => {
     zoomMapToMaker(map, marker);
   }
   // else if take the markers from the view in `app/views/bookings/show.html.erb`
-  else if (mapElement.dataset.markers != null) {
+  else if (mapElement.dataset.markers) {
     const markers = JSON.parse(mapElement.dataset.markers);
     console.log('markers', markers);
     
@@ -50,6 +48,7 @@ const addMarkerToMap = (map) => {
         console.log('object_default:', object);
         new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
       }
 
       // set marker for mechanic
@@ -66,23 +65,18 @@ const addMarkerToMap = (map) => {
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(map);
       }
-    
+      fitMapToMarkers(map, markers);
+      console.log('help', fitMapToMarkers(map, markers));
     });
-
-    fitMapToMarkers(map, markers);
+    console.log('map!', map);
+    console.log('help');
+   
   }
 }
 
 // Add Map to pages
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
-
-  // var bike = document.createElement('div');
-  //     bike.className = 'marker';
-  //       console.log('bike:', bike);
-  
-  // const marker = new mapboxgl.Marker(bike)
-  //   .setLngLat([ 13.4050, 52.5200 ])
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
@@ -92,113 +86,24 @@ const initMapbox = () => {
       attributionControl: false
     });
 
-    // to draw a pulsing dot icon for customer on the map.
-    var pulsingDot = {
-      width: 100,
-      height: 100,
-      data: new Uint8Array(100 * 100 * 4),
-      
-      // When the layer is added to the map,
-      // get the rendering context for the map canvas.
-      onAdd: function () {
-        var canvas = document.createElement('canvas');
-        canvas.width = this.width;
-        canvas.height = this.height;
-        this.context = canvas.getContext('2d');
-      },
-      
-      // Call once before every frame where the icon will be used.
-      render: function () {
-        var duration = 1000;
-        var t = (performance.now() % duration) / duration;
-        
-        var radius = (100 / 2) * 0.3;
-        var outerRadius = (100 / 2) * 0.7 * t + radius;
-        var context = this.context;
-        
-        // Draw the outer circle.
-        context.clearRect(0, 0, this.width, this.height);
-        context.beginPath();
-        context.arc(
-        this.width / 2,
-        this.height / 2,
-        outerRadius,
-        0,
-        Math.PI * 2
-        );
-        context.fillStyle = 'rgba(255, 200, 200,' + (1 - t) + ')';
-        context.fill();
-        
-        // Draw the inner circle.
-        context.beginPath();
-        context.arc(
-        this.width / 2,
-        this.height / 2,
-        radius,
-        0,
-        Math.PI * 2
-        );
-        context.fillStyle = 'rgba(255, 100, 100, 1)';
-        context.strokeStyle = 'white';
-        context.lineWidth = 2 + 4 * (1 - t);
-        context.fill();
-        context.stroke();
-        
-        // Update this image's data with data from the canvas.
-        this.data = context.getImageData(
-        0,
-        0,
-        this.width,
-        this.height
-        ).data;
-        
-        // Continuously repaint the map, resulting
-        // in the smooth animation of the dot.
-        map.triggerRepaint();
-        
-        // Return `true` to let the map know that the image was updated.
-        return true;
-      }
-    };
-
-    map.on('load', function () {
-      map.addImage('pulsing-dot', pulsingDot, { pixelRatio: 2 });
-      map.addSource('dot-point', {
-        'type': 'geojson',
-        'data': {
-          'type': 'FeatureCollection',
-          'features': [
-            {
-                'type': 'Feature',
-                'geometry': {
-                  'type': 'Point',
-                  // for customer
-                  'coordinates': [13.4050, 52.5200] // icon position [lng, lat]
-                  // 'maxzoom': 10
-                }
-            }
-          ]
-        }
-      });
-      map.addLayer({
-        'id': 'layer-with-pulsing-dot',
-        'type': 'symbol',
-        'source': 'dot-point',
-        'layout': {
-          'icon-image': 'pulsing-dot'
-        }
-      });
+    // get customer's current location
+    var geolocate = new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: true
     });
-      // const bounds = new mapboxgl.LngLatBounds();
-      // bounds.extend([13.4050, 52.5200])
-      // map.fitBounds(bounds, { padding: 0, maxZoom: 15, duration: 0 });
-      // pulsingMarker(map, marker);
+      // Add the control to the map.
+      map.addControl(geolocate);
+      // Set an event listener that fires
+      // when a trackuserlocationend event occurs.
+      geolocate.on('trackuserlocationend', function() {
+      console.log('A trackuserlocationend event has occurred.', geolocate)
+      });
+    
     addMarkerToMap(map);
+  
   }
 };
-
-// variables so that they can be used in another files
-// let map;
-// let marker;
 
 export { initMapbox };
