@@ -1,9 +1,14 @@
 module ApplicationHelper
 
-  # extracting coords from seeds
-def get_coords(location_string)
-  location_string.gsub(/\[|\]/, "").split(",")
-end
+  def get_coords(location_string)
+    
+    if location_string.is_a? String  
+      location_string.gsub(/\[|\]/, "").split(",")
+    else
+      location_string
+    end
+    
+  end
 
 # creating hash to parse on to mapbox
 def location_markers(booking)
