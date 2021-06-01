@@ -35,7 +35,9 @@
   <div id="map"
     style="width: 100%; height: 480px;"
     data-marker="<%= @customer_marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    <%# send a data to distinguish this map with the map of show.html.erb %>
+    data-myid="first">
   </div>
 
   <%= link_to new_repair_booking_path(@repair) do %>

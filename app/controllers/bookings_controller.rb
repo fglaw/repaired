@@ -1,3 +1,5 @@
+require 'json'
+
 class BookingsController < ApplicationController
   before_action :set_repair, only: [:new, :create]
 
@@ -10,20 +12,26 @@ class BookingsController < ApplicationController
     @repair = Repair.find(params[:repair_id])
     authorize @booking
     @review = Review.new
-    # for geocode
-    @customer_marker = {
-        lat: 52.5200,
-        lng: 13.4050,
-        who: 'customer'
-    }
 
-    @mechanic_marker = {
-        lat: 52.529614,
-        lng: 13.401874,
-        who: 'mechanic'
+    # Mechanic markers in show page for customer
+    @mechanics_locations = User.where(user_mechanic: true)[0..4].map { |user| user.current_location }
+    @markers = []
+    @mechanics_locations.each do |location|
+        array = JSON.parse(location)
+        @markers << {
+          lon: array.first,
+          lat: array.last
+        }
+    end
+    @markers
+    # Mechanic marker in show page for the mechanic
+    @mechanic_marker = []
+    arr = JSON.parse(current_user.current_location)
+    @mechanic_marker << {
+      lon: arr.first,
+      lat: arr.last
     }
-    @markers = [@customer_marker, @mechanic_marker]
-
+    @mechanic_marker
   end
 
   def new
@@ -32,11 +40,6 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.repair = @repair
     @booking.user = current_user
-    # for geocode
-    @customer_marker = {
-      lat: 52.5200,
-      lng: 13.4050
-    }
   end
 
   def create

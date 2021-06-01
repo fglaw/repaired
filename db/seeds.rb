@@ -74,7 +74,7 @@ mechanic = User.create!(
     name: "Fabian Fixit",
     user_mechanic: true,
     level: 3,
-    current_location: RandomLocation.near_by(52.5200, 13.4050, 10000),
+    current_location: "[52.592879, 13.431700]",
     rating: 4.8
   )
 
