@@ -58,20 +58,20 @@
 
 .card-booking {
   overflow: hidden;
-  width: 320px;
-  border-radius: 8px;
+  // width: 320px;
   display: flex;
   justify-content: center;
-  align-items: center;
   position: relative;
-  margin: 10px;
 }
 
 #new_booking {
   margin: 16px;
-  margin-top: 100px;
 }
 
 #text-lilac {
   color: #C4BBFA;
+}
+
+.text-light-grey {
+  color: #E0E0E0;
 }
