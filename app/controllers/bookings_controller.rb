@@ -40,6 +40,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.repair = @repair
     @booking.user = current_user
+    # @booking.location = current_user.current_location
   end
 
   def create
@@ -48,6 +49,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.repair = @repair
     @booking.user = current_user
+    @booking.location = current_user.current_location
     @booking.mechanic_id = User.where(name: "Fabian Fixit").first.id
       if @booking.save
         redirect_to repair_booking_path(@repair, @booking), notice: 'Booking was successfully created'
@@ -77,7 +79,7 @@ class BookingsController < ApplicationController
     end
 
     def booking_params
-        params.require(:booking).permit(:repair_id, :mechanic_id, photos: [])
+        params.require(:booking).permit(:repair_id, :mechanic_id, :location, photos: [])
     end
 
     def set_repair
