@@ -17,28 +17,37 @@
     </div>
 <% end %>
 
-  <!-- info views for customer & mechanic -->
-  <div class="row">
-    <div class="col">
-      <div class="badge-status d-flex align-items-center justify-content-center">
-        <p> <%= @booking.status %> </p>
-      </div>
-      <div class="d-flex justify-content-around align-items-center mt-3 mr-2">
-        <% if !current_user.user_mechanic %>
-          <%= render 'show_customer' %>
-        <% else %>
-          <%= render 'show_mechanic' %>
-        <% end %>
-      </div>
+<div class="badge-time" id="time">
+  <h5>15</h5>
+  <p>min</p>
+</div>
+
+<div class="badge-status d-flex align-items-center justify-content-center">
+  <p> <%= @booking.status %> </p>
+</div>
+
+<div class="container">
+  <% if !current_user.user_mechanic %>
+    <span>Your mechanic for today is:</span>
+    <%= render 'show_customer' %>
+  <% else %>
+    <%= render 'show_mechanic' %>
+  <% end %>
+
+  <div class="card-booking-image border-top mb-4">
+    <%= render 'images' %>
+
+    <div class="d-flex justify-content-center pt-4">
+      <h5><i class="fas fa-stopwatch mr-2"></i><%= @booking.repair.duration %> minutes</h5>
+    </div>
+
+    <div class="d-flex justify-content-center text-muted pb-4">
+      <span>Once arrived to complete the repair</span>
+    </div>
+
+    <div class="black-banner d-flex justify-content-center">
+      <span> <%= @booking.repair.repair_type %> </span>
     </div>
   </div>
 
-  <div class="badge-time" id="time">
-    <h5>15</h5>
-    <p>min</p>
-  </div>
-
-  <%#= render 'show_review' %>
 </div>
-
-
