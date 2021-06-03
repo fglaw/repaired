@@ -64,6 +64,17 @@
   position: relative;
 }
 
+.stages-card {
+  overflow: hidden;
+  height: 70px;
+  width: 100%;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding-top: 14px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
 #new_booking {
   margin: 16px;
 }

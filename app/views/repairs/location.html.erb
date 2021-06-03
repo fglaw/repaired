@@ -1,9 +1,6 @@
-<div class="container">
-
-  <%= link_to ('<i class="fas fa-long-arrow-alt-left mt-3"></i>').html_safe, repair_path(@repair) %>
-
-  <!-- stages 1,2,3 -->
-  <div class="row pl-3 pr-3">
+<!-- stages 1,2,3 -->
+<div class="stages-card">
+  <div class="row">
 
     <div class="col text-center text-light-grey">
       <i class="fas fa-wrench"></i>
@@ -29,6 +26,11 @@
     </div>
 
   </div>
+</div>
+
+<div class="container">
+
+  <%= link_to ('<i class="fas fa-long-arrow-alt-left mt-3"></i> back').html_safe, repair_path(@repair) %>
 
   <div class="d-flex justify-content-center pb-2">
     <h4 id="text-lilac">Confirm your location:</h4>
