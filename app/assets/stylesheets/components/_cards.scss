@@ -56,6 +56,24 @@
   }
 }
 
+.card-booking-image {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 100%;
+    img {
+      width: 100%;
+      border-radius: 14px 14px 0px 0px;
+    }
+
+  .grey-banner {
+    background: lightgray;
+    color: black;
+    padding: 17px;
+    border-radius: 0px 0px 14px 14px;
+  }
+}
+
 .card-booking {
   overflow: hidden;
   // width: 320px;
