@@ -1,16 +1,16 @@
 <div class="card mt-3 bg-dark border-primary">
-  <h4 class="p-3 mt-3 text-white">active repair</h4>
+  <h6 class="mt-3 mb-3 text-white">active repair</h6>
   <%= render 'components/booking_card_md', booking: @active_booking %>
 </div>
 <%# Accordion %>
 <div class="" id="accordion">
   <div class="card mt-3 bg-dark border-primary">
     <div class="card-header p-0" id="headingOne">
-      <h4 class="mb-0">
+      <h6 class="mb-0">
         <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
           queue  <i class="fas fa-angle-down"></i>
         </button>
-      </h4>
+      </h6>
     </div>
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
@@ -23,11 +23,11 @@
   <%# PENDING AKKORDEON %>
   <div class="card mt-3 bg-dark border-primary">
     <div class="card-header p-0" id="headingTwo">
-      <h4 class="mb-0">
+      <h6 class="mb-0">
         <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           new requests  <i class="fas fa-angle-down"></i>
         </button>
-      </h4>
+      </h6>
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
@@ -39,11 +39,11 @@
   <%#TOTAL EARNINGS%>
   <div class="card mt-3 bg-dark border-primary">
     <div class="card-header p-0" id="headingThree">
-      <h4 class="mb-0">
+      <h6 class="mb-0">
         <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           total earnings  <i class="fas fa-angle-down"></i>
         </button>
-      </h4>
+      </h6>
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
@@ -51,9 +51,9 @@
           <%= render 'components/booking_card_total_earnings', booking: booking %>
         <% end %>
         <div class="d-flex justify-content-between">
-          <h6>total:</h6>
-          <div>
-            <%= @total_earnings %>
+          <div class="pl-3 text-success">total:</div>
+          <div class="pr-3 text-success">
+            <%= @total_earnings %>€
           </div>
         </div>
       </div>
