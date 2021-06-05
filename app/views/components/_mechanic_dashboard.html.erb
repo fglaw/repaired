@@ -9,45 +9,22 @@
     <%= render 'components/pending_booking_card', booking: booking %>
   <% end %>
 </div>
-<%# Accordion %>
-<div class="" id="accordion">
-  <%# PENDING AKKORDEON %>
-  <div class="card mt-3 bg-dark border-primary">
-    <div class="card-header p-0" id="headingTwo">
-      <h6 class="mb-0">
-        <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          new requests  <i class="fas fa-angle-down"></i>
-        </button>
-      </h6>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        <% @pending_bookings.each do |booking| %>
-          <%= render 'components/pending_booking_card', booking: booking %>
-        <% end %>      </div>
-    </div>
-  </div>
-  <%#TOTAL EARNINGS%>
-  <div class="card mt-3 bg-dark border-primary">
-    <div class="card-header p-0" id="headingThree">
-      <h6 class="mb-0">
-        <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          total earnings  <i class="fas fa-angle-down"></i>
-        </button>
-      </h6>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        <% @history_bookings.each do |booking| %>
-          <%= render 'components/booking_card_total_earnings', booking: booking %>
-        <% end %>
-        <div class="d-flex justify-content-between">
-          <div class="pl-3 text-success">total:</div>
-          <div class="pr-3 text-success">
-            <%= @total_earnings %>€
-          </div>
-        </div>
+<%# total earnings %>
+<div class="card mt-3 bg-dark border-0">
+  <div class="card-body">
+    <div class="d-flex justify-content-between mb-2">
+      <div class="pl-2 text-white">
+        <h6>total earnings:</h6>
+      </div>
+      <div class="pr-2 text-white">
+        <h6>
+          <%= @total_earnings %>€
+        </h6>
       </div>
     </div>
+    <% @history_bookings.each do |booking| %>
+      <%= render 'components/booking_card_total_earnings', booking: booking %>
+    <% end %>
   </div>
 </div>
+<%# Accordion %>
