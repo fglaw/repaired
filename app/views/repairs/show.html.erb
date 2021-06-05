@@ -1,34 +1,36 @@
-<div class="container">
-
-  <%= link_to ('<i class="fas fa-long-arrow-alt-left mt-3"></i>').html_safe, repairs_path %>
-
-  <!-- stages 1,2,3 -->
-  <div class="row pl-3 pr-3">
+<!-- stages 1,2,3 -->
+<div class="stages-card">
+  <div class="row">
 
     <div class="col text-center">
       <i class="fas fa-wrench"></i>
       <p>issue</p>
     </div>
 
-    <div class="col align-self-center text-muted">
+    <div class="col align-self-center text-light-grey">
       <i class="fas fa-ellipsis-h"></i>
     </div>
 
-    <div class="col text-center text-muted">
+    <div class="col text-center text-light-grey">
       <i class="fas fa-location-arrow"></i>
       <p>location</p>
     </div>
 
-    <div class="col align-self-center text-muted">
+    <div class="col align-self-center text-light-grey">
       <i class="fas fa-ellipsis-h"></i>
     </div>
 
-    <div class="col text-center text-muted">
+    <div class="col text-center text-light-grey">
       <i class="far fa-images"></i>
       <p>photos</p>
     </div>
 
   </div>
+</div>
+
+<div class="container">
+
+  <span id="text-lilac"> <%= link_to ('<i class="fas fa-long-arrow-alt-left mt-3 mr-1"></i>back').html_safe, repairs_path %> </span>
 
   <div class="d-flex justify-content-center pb-2">
     <h4 id="text-lilac">Confirm your issue:</h4>
@@ -53,6 +55,9 @@
           <p class="mr-3">Issue complexity:</p>
           <% @repair.level.times do %>
             <p> <i class="mr-2 fas fa-cog mr-1 text-muted"></i></p>
+          <% end %>
+          <% (3 - @repair.level).times do %>
+            <p> <i class="mr-2 fas fa-cog mr-1 text-light-grey"></i></p>
           <% end %>
         </div>
 

@@ -10,9 +10,9 @@
   border-width: 5px;
   border-color: #C4BBFA;
   position: absolute;
-  top: 80%;
+  top: 44%;
   left: 50%;
-  transform: translate(-50%, -80%);
+  transform: translate(-50%, -44%);
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-align: center;
@@ -28,6 +28,16 @@
   h5 {
     margin: 0;
   }
+
+  cursor: pointer;
+  outline: none;
+}
+
+.badge-time:hover {background-color: #C4BBFA}
+
+.badge-time:active {
+  background-color: #C4BBFA;
+  box-shadow: 0 0 15px #666;
 }
 
 .badge-status {

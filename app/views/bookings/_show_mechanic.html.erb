@@ -1,2 +1,8 @@
-<p class="text-muted mr-4"> <i class="fas fa-cog mr-2"></i><%= @booking.repair.repair_type %> </p>
-<p class="text-muted"><i class="fas fa-wrench mr-2"></i><%= @booking.user.name %> </p>
+<div class="d-flex mt-3 justify-content-center mb-2">
+  <h5 class="text-muted mr-3">Customer:</h5>
+</div>
+
+<div class="d-flex justify-content-center align-items-center text-muted mb-3">
+  <%= image_tag "https://kitt.lewagon.com/placeholder/users/fabianglaw", class: "avatar-booking-show mr-3", alt: "avatar" %>
+  <h5> <%= @booking.user.name %> </h5>
+</div>

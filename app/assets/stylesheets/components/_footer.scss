@@ -3,15 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 70px;
+  height: 50px;
   color: white;
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 
-.footer .fa-heart {
-  color: #D23333;
+.footer span {
+  // padding-left: 10px;
+  font-size: 10px;
 }
 
 #page-container {
@@ -20,5 +21,5 @@
 }
 
 #content-wrap {
-  padding-bottom: 70px;    /* Footer height */
+  padding-bottom: 50px;    /* Footer height */
 }

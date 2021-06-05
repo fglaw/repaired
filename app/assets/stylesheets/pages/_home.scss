@@ -1,11 +1,21 @@
 // Specific CSS for your home-page
 
 .home-banner {
-  padding-top: 160px;
-  padding-bottom: 250px;
+  padding-top: 16px;
+  // padding-bottom: 0px;
   background: #C4BBFA;
+  text-align: center;
+  color: #000;
+  .title {
+    background: #bfd4e1;
+    transform: translateY(20px);
+    padding-top: 20px;
+    z-index: 10;
+  }
   button {
-    margin-top: 50px;
+    margin-top: 16px;
+    color: white;
+    background-color: black;
   }
 }
 
@@ -13,10 +23,20 @@
   background-size: cover;
   background-position: center;
   padding: 140px 0;
+  z-index: 5;
 }
 
 .banner-howto {
-  background: black;
+  background: #C4BBFA;
   color: white;
   padding: 25px;
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+    // margin-bottom: 6px;
+    text-align: left;
+  }
 }
+

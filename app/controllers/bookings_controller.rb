@@ -14,13 +14,13 @@ class BookingsController < ApplicationController
     @review = Review.new
 
     # Mechanic markers in show page for customer
-    @mechanics_locations = User.where(user_mechanic: true)[0..4].map { |user| user.current_location }
+    @mechanics_locations = User.where(user_mechanic: true)[0..5].map { |user| user.current_location }
     @markers = []
     @mechanics_locations.each do |location|
         array = JSON.parse(location)
         @markers << {
-          lon: array.first,
-          lat: array.last
+          lon: array.last,
+          lat: array.first
         }
     end
     @markers
@@ -28,10 +28,25 @@ class BookingsController < ApplicationController
     @mechanic_marker = []
     arr = JSON.parse(current_user.current_location)
     @mechanic_marker << {
-      lon: arr.first,
-      lat: arr.last
+      lon: arr.last,
+      lat: arr.first
     }
     @mechanic_marker
+
+    # customer marker 
+    @customer_marker = []
+    customer_array = @booking.location.split(",")
+    if @booking.location != ""
+      @customer_marker << {
+        lon: customer_array.first,
+        lat: customer_array.last
+      }
+    else 
+      @customer_marker = {
+        lng: 13.4050,
+        lat: 52.5200
+      }
+    end 
   end
 
   def new
@@ -49,7 +64,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.repair = @repair
     @booking.user = current_user
-    @booking.location = current_user.current_location
+    # @booking.location = current_user.current_location
     @booking.mechanic_id = User.where(name: "Fabian Fixit").first.id
       if @booking.save
         redirect_to repair_booking_path(@repair, @booking), notice: 'Booking was successfully created'
