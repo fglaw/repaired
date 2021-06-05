@@ -2,9 +2,9 @@
   <div class="" id="accordion">
     <%# PENDING AKKORDEON %>
     <div class="card mt-1  bg-dark">
-      <div class="card-header p-0" id="headingThree">
+      <div class="card-header p-0" id="heading<%= booking.id %>">
         <h6 class="mb-0">
-          <button class="p-0 border-0 bg-primary text-black collapsed w-100 no-text-deco" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <button class="p-0 border-0 bg-primary text-black collapsed w-100 no-text-deco" data-toggle="collapse" data-target="#collapse<%= booking.id %>" aria-expanded="false" aria-controls="collapse<%= booking.id %>">
             <div class="overflow-hidden shadow">
               <div class="d-flex flex-row bg-primary" >
                 <div class="d-flex align-items-center justify-content-between flex-grow-1 p-2">
@@ -19,7 +19,7 @@
             </button>
           </h6>
         </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div id="collapse<%= booking.id %>" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
           <div class="card-body">
             <% location_markers(booking) %>
             <div id="map-<%= booking.id %>" class="map"
