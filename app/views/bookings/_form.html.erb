@@ -4,9 +4,11 @@
         <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none hidden', id: 'photos-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload photos'  %>
         <%= image_tag "", class: "hidden", id: "photos-preview" %>
       </div>
-  
+      <%= f.input :location, input_html: { id: 'location', type: "hidden", value: :location }, label: false %>
+
+
       <div class="col-sm-3 mt-3 d-flex justify-content-center">
-        <%= f.submit class: 'btn btn-flat btn-lg', value: 'Book now'  %>
+        <%= f.submit class: 'btn btn-flat btn-lg', value: 'Book now', :disabled => true , id: 'book-button' %>
       </div>
   </div>
 <% end %>
