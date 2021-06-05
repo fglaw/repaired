@@ -44,13 +44,13 @@ puts 'database is clean'
 
 user_photo_url = "https://kitt.lewagon.com/placeholder/users/random"
 
-puts "random user creation"
-10.times do 
+puts "random customer creation"
+2.times do 
   User.create!(
     email: Faker::Internet.email,
     password: "123456",
     name: Faker::Name.name ,
-    user_mechanic: mechanic?,
+    user_mechanic: false,
     current_location: RandomLocation.near_by(52.5200, 13.4050, 10000),
     level: rand(4),
     rating: rand(6)
@@ -150,23 +150,17 @@ Booking.create!(
 
   puts "creating bookings for fabian fixit"
 
-  Booking.create!(
-    location: RandomLocation.near_by(52.5200, 13.4050, 10000),
-    status: "accepted",
-    user_id: User.where(user_mechanic: false).sample.id,
-    repair_id: Repair.all.sample.id,
-    mechanic_id: mechanic.id
- )
 
-  3.times do 
+# adding 1 pending booking for fabian 
+    loca_array = RandomLocation.near_by(52.5200, 13.4050, 10000)
     Booking.create!(
-      location: RandomLocation.near_by(52.5200, 13.4050, 10000),
+      location: loca_array[0].to_s + ", " + loca_array[1].to_s,
       status: "pending",
       user_id: User.where(user_mechanic: false).sample.id,
       repair_id: Repair.all.sample.id,
       mechanic_id: mechanic.id
    )
-  end
+  
 
   10.times do
     Booking.create!(
@@ -180,19 +174,6 @@ Booking.create!(
 
 
 
-
-puts "random booking creation"
-
-60.times do
-  booking = Booking.new(
-    status: set_status,
-    location: RandomLocation.near_by(52.5200, 13.4050, 10000),
-    repair_id: Repair.all.sample.id
-  )
-  booking.user = generate_booking_user
-  booking.mechanic = generate_booking_mechanic
-  booking.save
-end
 
 puts "attaching photos to users"
 
