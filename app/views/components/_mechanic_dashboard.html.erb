@@ -1,62 +1,30 @@
-<div class="card mt-3 bg-dark border-primary">
-  <h4 class="p-3 mt-3 text-white">active repair</h4>
+<div class="card mt-3 bg-dark border-0">
+  <h6 class="mt-3 mb-3 text-white"><i class="fas fa-tools"></i>   active repair   <i class="fas fa-tools"></i></h6>
   <%= render 'components/booking_card_md', booking: @active_booking %>
 </div>
-<%# Accordion %>
-<div class="" id="accordion">
-  <div class="card mt-3 bg-dark border-primary">
-    <div class="card-header p-0" id="headingOne">
-      <h4 class="mb-0">
-        <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          queue  <i class="fas fa-angle-down"></i>
-        </button>
-      </h4>
-    </div>
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-        <% @queued_bookings.each do |booking| %>
-          <%= render 'components/pending_booking_card', booking: booking %>
-        <% end %>
+<%# REQUESTS %>
+<div class="card mt-3 bg-dark border-0">
+  <h6 class="mt-3 mb-3 text-white"><i class="far fa-clock"></i>   your next repairs  <i class="far fa-clock"></i></h6>
+  <% @pending_bookings.each do |booking| %>
+    <%= render 'components/pending_booking_card', booking: booking %>
+  <% end %>
+</div>
+<%# total earnings %>
+<div class="card mt-3 bg-dark border-0">
+  <div class="card-body">
+    <div class="d-flex justify-content-between mb-2">
+      <div class="pl-2 text-white">
+        <h6>total earnings:</h6>
+      </div>
+      <div class="pr-2 text-white">
+        <h6>
+          <%= @total_earnings %>€
+        </h6>
       </div>
     </div>
-  </div>
-  <%# PENDING AKKORDEON %>
-  <div class="card mt-3 bg-dark border-primary">
-    <div class="card-header p-0" id="headingTwo">
-      <h4 class="mb-0">
-        <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          new requests  <i class="fas fa-angle-down"></i>
-        </button>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        <% @pending_bookings.each do |booking| %>
-          <%= render 'components/pending_booking_card', booking: booking %>
-        <% end %>      </div>
-    </div>
-  </div>
-  <%#TOTAL EARNINGS%>
-  <div class="card mt-3 bg-dark border-primary">
-    <div class="card-header p-0" id="headingThree">
-      <h4 class="mb-0">
-        <button class="p-3 border-0 bg-dark text-white collapsed w-100 no-text-deco rounded" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          total earnings  <i class="fas fa-angle-down"></i>
-        </button>
-      </h4>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        <% @history_bookings.each do |booking| %>
-          <%= render 'components/booking_card_total_earnings', booking: booking %>
-        <% end %>
-        <div class="d-flex justify-content-between">
-          <h6>total:</h6>
-          <div>
-            <%= @total_earnings %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <% @history_bookings.each do |booking| %>
+      <%= render 'components/booking_card_total_earnings', booking: booking %>
+    <% end %>
   </div>
 </div>
+<%# Accordion %>

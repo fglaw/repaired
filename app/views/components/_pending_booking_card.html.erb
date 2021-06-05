@@ -1,39 +1,48 @@
-<div class="mb-2 no-text-deco" >
-  <%= link_to repair_booking_path(booking.repair, booking), class: "no-text-deco" do %>
-    <div class="border rounded overflow-hidden bg-secondary shadow mb-2">
-      <%#  %>
-      <div class="d-flex flex-row bg-primary" >
-        <%# booking.repair.image %>
-        <img src=<%= booking.repair.image_url %> alt="" class="repair-pic p-0 ml-3 mr-3 mt-2 mb-2">
-        <div class="d-flex align-items-center justify-content-between flex-grow-1 mr-3">
-          <strong>
-            <%= booking.repair.repair_type %>
-          </strong>
-          <div>
-            <%= booking.repair.price %>€
-          </div>
+<div class="mb-3 no-text-deco" >
+  <div class="" id="accordion">
+    <%# PENDING AKKORDEON %>
+    <div class="card mt-1  bg-dark">
+      <div class="card-header p-0" id="headingThree">
+        <h6 class="mb-0">
+          <button class="p-0 border-0 bg-primary text-black collapsed w-100 no-text-deco" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <div class="overflow-hidden shadow">
+              <div class="d-flex flex-row bg-primary" >
+                <div class="d-flex align-items-center justify-content-between flex-grow-1 p-2">
+                  <strong>
+                    <%= booking.repair.repair_type %>
+                  </strong>
+                  <div>
+                    <%= booking.repair.price %>€ <i class=" ml-3 fas fa-caret-down"></i>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </h6>
         </div>
-      </div>
-      <%#MAP%>
-      <% location_markers(booking) %>
-      <div id="map-<%= booking.id %>" class="map"
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+          <div class="card-body">
+            <% location_markers(booking) %>
+            <div id="map-<%= booking.id %>" class="map"
      style="width: 100%; height: 300px;"
      data-booking-id="<%= booking.id %>"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+            <div class="mr-3 ml-3">
+              <% if booking.status == "pending" %>
+                <div class="d-flex justify-content-between">
+                  <%= link_to repair_booking_path(booking.repair, booking, status: "accepted"), method: :patch, class: "no-text-deco" do %>
+                    <h6 class="text-success">accept</h6>
+                  <% end %>
+                  <%= link_to repair_booking_path(booking.repair, booking, status: "declined"), method: :patch, class: "no-text-deco" do %>
+                    <h6 class="text-warning">decline</h6>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  <% end %>
-  <div class="mr-3 ml-3">
-    <% if booking.status == "pending" %>
-      <div class="d-flex justify-content-between">
-        <%= link_to repair_booking_path(booking.repair, booking, status: "accepted"), method: :patch, class: "no-text-deco" do %>
-          <h6 class="text-success">accept</h6>
-        <% end %>
-        <%= link_to repair_booking_path(booking.repair, booking, status: "declined"), method: :patch, class: "no-text-deco" do %>
-          <h6 class="text-warning">decline</h6>
-        <% end %>
-      </div>
-    <% end %>
+    <%# old %>
   </div>
-</div>
