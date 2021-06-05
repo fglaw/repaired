@@ -20,7 +20,7 @@
           </h6>
         </div>
         <div id="collapse<%= booking.id %>" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-          <div class="card-body">
+          <div class="card-body p-0 border-0">
             <% location_markers(booking) %>
             <div id="map-<%= booking.id %>" class="map"
      style="width: 100%; height: 300px;"
@@ -28,7 +28,7 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
             </div>
-            <div class="mr-3 ml-3">
+            <div class="mt-2 mr-3 ml-3">
               <% if booking.status == "pending" %>
                 <div class="d-flex justify-content-between">
                   <%= link_to repair_booking_path(booking.repair, booking, status: "accepted"), method: :patch, class: "no-text-deco" do %>
