@@ -89,14 +89,14 @@ repair1 = Repair.create!(
     price: 12,
     duration: 20,
     level: 1,
-    image_url: "https://images.unsplash.com/photo-1549225484-ea2ff2df54de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3751&q=80",
+    image_url: "https://images.unsplash.com/photo-1590847003083-cb5f2380888a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
   )
 Repair.create!(
   repair_type: 'Gears Alignment',
   price: 15,
   duration: 30,
   level: 2,
-  image_url: "https://images.unsplash.com/photo-1517263975512-e1e9172f466b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
+  image_url: "https://images.unsplash.com/photo-1525104325683-eb7d21279760?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1510&q=80",
 )
 Repair.create!(
     repair_type: 'Wheel repair',
@@ -111,7 +111,7 @@ Repair.create!(
     price: 10,
     duration: 15,
     level: 1,
-    image_url: "https://images.unsplash.com/photo-1562486033-7066663ee15f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=582&q=80",
+    image_url: "https://images.unsplash.com/photo-1603300449700-4f656e570429?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80",
     )
 
 Repair.create!(
