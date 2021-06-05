@@ -63,7 +63,7 @@ const getDirection = (map, mechanic_marker) => {
                     'line-cap': 'round'
                 },
                 paint: {
-                    'line-color': '#3887be',
+                    'line-color': '#A3A6D8',
                     'line-width': 5,
                     'line-opacity': 0.75
                 }
@@ -108,7 +108,7 @@ const getDirection = (map, mechanic_marker) => {
             },
             paint: {
                 'circle-radius': 10,
-                'circle-color': '#3887be'
+                'circle-color': '#A3A6D8'
             }
         });
         // this is where the code from the next step will go

@@ -116,6 +116,13 @@ const initMapbox = () => {
           .setLngLat([parseFloat(customerMarker[0].lon), parseFloat(customerMarker[0].lat) ])
           .addTo(map);
 
+          // add mechanic marker and color it purple
+          new mapboxgl.Marker({
+            color: '#A3A6D8'
+          })
+          .setLngLat([ mechanic_marker[0].lon, mechanic_marker[0].lat ])
+          // .addTo(map);
+
           // get direction when click on map anywhere
           getDirection(map, mechanic_marker);
         }

@@ -24,7 +24,9 @@ const moveMarker = (map, route) => {
                 console.log('---- i ', i);
 
                 marker.remove()
-                marker = new mapboxgl.Marker()
+                marker = new mapboxgl.Marker({
+                    color: '#A3A6D8'
+                })
                 .setLngLat([ route[i][0], route[i][1] ])
                 .remove()
                 marker.addTo(map)
