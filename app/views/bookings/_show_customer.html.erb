@@ -1,10 +1,17 @@
-<p class="text-muted"> <i class="fas fa-wrench mr-2"></i> </p>
+<div class="d-flex mt-3 justify-content-center mb-2">
+  <h5 class="text-muted mr-3">Your mechanic:</h5>
+</div>
 
-<% if @booking.status == "pending" %>
-  <p>Awaiting mechanic acceptance</p>
-<% else %>
-  <%= @booking.mechanic.name %>
-<% end %>
+<div class="d-flex justify-content-center align-items-center text-muted mb-3">
+  <% if @booking.status == "pending" %>
+    <p>-- awaiting acceptance --</p>
+  <% else %>
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/fabianglaw", class: "avatar-booking-show mr-3", alt: "avatar" %>
+    <h5> <%= @booking.mechanic.name %> </h5>
+  <% end %>
+</div>
+
+
 
 
 

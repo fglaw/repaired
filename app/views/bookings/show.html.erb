@@ -2,7 +2,7 @@
 
   <div class="map-show">
     <div id="map"
-      style="width: 100%; height: 600px;"
+      style="width: 100%; height: 580px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
@@ -10,7 +10,7 @@
 <% else %>
   <div class="map-show">
     <div id="map"
-      style="width: 100%; height: 600px;"
+      style="width: 100%; height: 580px;"
       data-marker="<%= @mechanic_marker.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       data-mechanic="mechanic_map">
@@ -28,7 +28,6 @@
 
 <div class="container">
   <% if !current_user.user_mechanic %>
-    <span>Your mechanic for today is:</span>
     <%= render 'show_customer' %>
   <% else %>
     <%= render 'show_mechanic' %>
@@ -42,10 +41,10 @@
     </div>
 
     <div class="d-flex justify-content-center text-muted pb-4">
-      <span>Once arrived to complete the repair</span>
+      <span>Once arrived, to complete the repair</span>
     </div>
 
-    <div class="black-banner d-flex justify-content-center">
+    <div class="grey-banner d-flex justify-content-center">
       <span> <%= @booking.repair.repair_type %> </span>
     </div>
   </div>
