@@ -13,7 +13,6 @@ module ApplicationHelper
 # creating hash to parse on to mapbox
 def location_markers(booking)
   location_array = get_coords(booking.location) 
-  raise
   @customer_marker = {
       
       lat: location_array[0].to_f,

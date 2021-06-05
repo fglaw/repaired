@@ -79,12 +79,19 @@ class BookingsController < ApplicationController
       if params["status"] == "declined"
 
         @booking.mechanic = random_mechanic
-      else
+        @booking.save
+      redirect_to dashboard_path
+      elsif params["status"] == "completed"
 
         @booking.status = params["status"]
+        @booking.save
+        redirect_to dashboard_path
+      else
+        @booking.status = params["status"]
+        @booking.save
+        redirect_to repair_booking_path(@booking.repair, @booking)
       end
-      @booking.save
-      redirect_to dashboard_path
+      
     end
 
     private

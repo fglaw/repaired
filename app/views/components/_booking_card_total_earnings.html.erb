@@ -8,9 +8,9 @@
           <%= booking.repair.repair_type %>
         </strong>
       </div>
-      <div><%= booking.created_at %></div>
-      <div>
-        <%= booking.repair.price %>€
+      <div></div>
+      <div><%= booking.created_at.strftime("%d/%m/%Y") %>
+        - <%= booking.repair.price %>€
       </div>
     </div>
   </div>
