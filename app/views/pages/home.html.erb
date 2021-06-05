@@ -1,13 +1,12 @@
-<div class="home-banner">
-  <div class="title mt-2">
-    <div class="">
-      <h2>BROKEN BIKE? <br>WE GOT YOU.</h2>
-    </div>
+<div class="homepage-background">
+  <div class="title-banner d-flex justify-content-center">
+    <h2>BROKEN BIKE? <br>WE GOT YOU.</h2>
   </div>
+
   <div class="img-banner" style="background-image: url(https://source.unsplash.com/6I7PthWd8BI);">
   </div>
 
-  <div class="banner-howto mt-2">
+  <div class="banner-howto">
     <div class="container">
       <h3 class="mt-2 mb-2">HOW DOES IT WORK?</h3>
       <ol>
@@ -16,12 +15,13 @@
         <h3 class="mt-2 mb-1"><li>FIXED</li></h3>
       </ol>
     </div>
-
-  <div class="container mt-1">
-    <div class="m-3">
-      <%= link_to repairs_path do %>
-        <button type="button" class="btn-submit">REQUEST</button>
-      <% end %>
+    <div class="container">
+      <div class="m-2">
+        <%= link_to repairs_path do %>
+          <button type="button" class="btn-submit">REQUEST</button>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
