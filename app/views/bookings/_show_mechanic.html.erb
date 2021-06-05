@@ -3,6 +3,6 @@
 </div>
 
 <div class="d-flex justify-content-center align-items-center text-muted mb-3">
-  <%= image_tag "https://kitt.lewagon.com/placeholder/users/fabianglaw", class: "avatar-booking-show mr-3", alt: "avatar" %>
+  <%= cl_image_tag @booking.user.photo.key, height: 42, width: 42, crop: :fill, class: 'avatar-booking-show mr-3' %>
   <h5> <%= @booking.user.name %> </h5>
 </div>
