@@ -93,16 +93,15 @@ const getDirection = (map, mechanic_marker, customerMarker) => {
             source: {
                 type: 'geojson',
                 data: {
-                type: 'FeatureCollection',
-                features: [{
-                    type: 'Feature',
-                    properties: {},
-                    geometry: {
-                    type: 'Point',
-                    coordinates: start
-                    }
-                }
-                ]
+                    type: 'FeatureCollection',
+                    features: [{
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                        type: 'Point',
+                        coordinates: start
+                        }
+                    }]
                 }
             },
             paint: {
