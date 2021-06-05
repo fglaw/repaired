@@ -22,7 +22,7 @@ const addMarkerToMap = (map) => {
     // Create a HTML element for your custom marker
     const element = document.createElement('div');
     element.className = 'marker';
-    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundImage = 'url(https://res.cloudinary.com/ddk6eqs6l/image/upload/v1622891551/i4ltbqhwlljnfxiqzvp1.png)';
     console.log('markers url', marker.image_url);
 
       new mapboxgl.Marker(element)

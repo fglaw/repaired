@@ -39,6 +39,9 @@ const getDirection = (map, mechanic_marker, customerMarker) => {
                     coordinates: route
                 }
             };
+
+    
+
             // if the route already exists on the map, reset it using setData
             if (map.getSource('route')) {
                 map.getSource('route').setData(geojson);
@@ -62,9 +65,9 @@ const getDirection = (map, mechanic_marker, customerMarker) => {
                     'line-cap': 'round'
                 },
                 paint: {
-                    'line-color': '#63488C',
-                    'line-width': 6,
-                    'line-opacity': 0.75
+                    'line-color': '#bbb1ff',
+                    'line-width': 5,
+                    'line-opacity': 0.5
                 }
                 });
             }

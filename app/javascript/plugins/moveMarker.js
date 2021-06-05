@@ -27,12 +27,13 @@ const moveMarker = (map, route, mechanic_marker) => {
                 console.log('---- i ', i);
                 // Create a HTML element to make this icon to bik
                 const element = document.createElement('div');
-                element.className = 'mechanic_marker[0]';
-                element.style.backgroundImage = `url('${mechanic_marker[0].image_url}')`;
+                element.className = 'marker';
+                element.style.backgroundImage =
+                'url(https://res.cloudinary.com/ddk6eqs6l/image/upload/v1622891551/i4ltbqhwlljnfxiqzvp1.png)';
+                element.style.backgroundSize = '100%';
                 marker.remove()
                 marker = new mapboxgl.Marker(element)
                   .setLngLat([ route[i][0], route[i][1] ])
-                  .remove()
                   .addTo(map)
           }, 600 * i);
     }

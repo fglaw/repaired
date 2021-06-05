@@ -30,8 +30,7 @@ class BookingsController < ApplicationController
     arr = JSON.parse(current_user.current_location)
     @mechanic_marker << {
       lon: arr.last,
-      lat: arr.first,
-      image_url: helpers.asset_url("https://res.cloudinary.com/ddk6eqs6l/image/upload/v1622891551/i4ltbqhwlljnfxiqzvp1.png")
+      lat: arr.first
     }
     @mechanic_marker
 
@@ -41,14 +40,12 @@ class BookingsController < ApplicationController
     if @booking.location != ""
       @customer_marker << {
         lon: customer_array.first,
-        lat: customer_array.last,
-        image_url: helpers.asset_url("https://res.cloudinary.com/ddk6eqs6l/image/upload/v1622891551/i4ltbqhwlljnfxiqzvp1.png")
+        lat: customer_array.last
       }
     else 
       @customer_marker = {
         lng: 13.4050,
-        lat: 52.5200,
-        image_url: helpers.asset_url("https://res.cloudinary.com/ddk6eqs6l/image/upload/v1622891551/i4ltbqhwlljnfxiqzvp1.png")
+        lat: 52.5200
       }
     end 
   end
