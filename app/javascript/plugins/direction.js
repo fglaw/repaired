@@ -2,19 +2,18 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { moveMarker } from './moveMarker';
 
-const getDirection = (map, mechanic_marker) => {
+const getDirection = (map, mechanic_marker, customerMarker) => {
     console.log('getDirection is working in init_mapbox file?')
     // initialize the map canvas to interact with later
     var canvas = map.getCanvasContainer();
     var start = [ mechanic_marker[0].lon, mechanic_marker[0].lat ];
-    // var start = [-122.662323, 45.523751];
+    var end = [parseFloat(customerMarker[0].lon), parseFloat(customerMarker[0].lat)]
     // create a function to make a directions request
     const getRoute = (end) => {
         // make a directions request using cycling profile
         // an arbitrary start will always be the same
         // only the end or destination will change
         var start = [ mechanic_marker[0].lon, mechanic_marker[0].lat ];
-        // var start = [-122.662323, 45.523751];
         var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
     
         // make an XHR request https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
@@ -29,7 +28,7 @@ const getDirection = (map, mechanic_marker) => {
             if (route != null) {
                 const timeButton = document.getElementById("time")
                 timeButton.addEventListener('click', () => {
-                    moveMarker(map, route);
+                    moveMarker(map, route, mechanic_marker);
                 });
             };
             var geojson = {
@@ -63,8 +62,8 @@ const getDirection = (map, mechanic_marker) => {
                     'line-cap': 'round'
                 },
                 paint: {
-                    'line-color': '#A3A6D8',
-                    'line-width': 5,
+                    'line-color': '#63488C',
+                    'line-width': 6,
                     'line-opacity': 0.75
                 }
                 });
@@ -111,60 +110,87 @@ const getDirection = (map, mechanic_marker) => {
                 'circle-color': '#A3A6D8'
             }
         });
-        // this is where the code from the next step will go
-        // get end location from user by clicking anywhere on map
-        map.on('click', function(e) {
-            var coordsObj = e.lngLat;
-            canvas.style.cursor = '';
-            var coords = Object.keys(coordsObj).map(function(key) {
-              return coordsObj[key];
-            });
-            var end = {
-              type: 'FeatureCollection',
-              features: [{
-                type: 'Feature',
-                properties: {},
-                geometry: {
-                  type: 'Point',
-                  coordinates: coords
+      
+        // Add ending point to the map
+        map.addLayer({
+            id: 'end',
+            type: 'circle',
+            source: {
+                type: 'geojson',
+                data: {
+                type: 'FeatureCollection',
+                features: [{
+                    type: 'Feature',
+                    properties: {},
+                    geometry: {
+                    type: 'Point',
+                    coordinates: end
+                    }
                 }
-              }
-              ]
-            };
-            if (map.getLayer('end')) {
-              map.getSource('end').setData(end);
-            } else {
-              map.addLayer({
-                id: 'end',
-                type: 'circle',
-                source: {
-                  type: 'geojson',
-                  data: {
-                    type: 'FeatureCollection',
-                    features: [{
-                      type: 'Feature',
-                      properties: {},
-                      geometry: {
-                        type: 'Point',
-                        coordinates: coords
-                      }
-                    }]
-                  }
-                },
-                paint: {
-                  'circle-radius': 10,
-                  'circle-color': '#63488C'
+                ]
                 }
-              });
+            },
+            paint: {
+                'circle-radius': 10,
+                'circle-color': '#63488C'
             }
-            getRoute(coords);
-            console.log('getRoute(coords)', getRoute(coords));
-          });
+        });
+        // show the direction when map.on
+        getRoute(end);
+
+        // get end location from user by clicking anywhere on map
+        // below map.on('click') does not do anything
+        // map.on('click', function(e) {
+        //     var coordsObj = e.lngLat;
+        //     canvas.style.cursor = '';
+        //     var coords = Object.keys(coordsObj).map(function(key) {
+        //       return coordsObj[key];
+        //     });
+        //     var end = {
+        //       type: 'FeatureCollection',
+        //       features: [{
+        //         type: 'Feature',
+        //         properties: {},
+        //         geometry: {
+        //           type: 'Point',
+        //           coordinates: coords
+        //         }
+        //       }
+        //       ]
+        //     };
+        //     if (map.getLayer('end')) {
+        //       map.getSource('end').setData(end);
+        //     } else {
+        //       map.addLayer({
+        //         id: 'end',
+        //         type: 'circle',
+        //         source: {
+        //           type: 'geojson',
+        //           data: {
+        //             type: 'FeatureCollection',
+        //             features: [{
+        //               type: 'Feature',
+        //               properties: {},
+        //               geometry: {
+        //                 type: 'Point',
+        //                 coordinates: coords
+        //               }
+        //             }]
+        //           }
+        //         },
+        //         paint: {
+        //           'circle-radius': 10,
+        //           'circle-color': '#63488C'
+        //         }
+        //       });
+        //     }
+        // });
+        getRoute(end);
     });
 };
 
 let route;
-console.log('route', route);
+
 
 export { getDirection }
 

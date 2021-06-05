@@ -1,8 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { getDirection } from './direction';
-import { moveMarker } from './moveMarker';
-
+import { pulsingMarker } from './pulsing';
 
 // Zoom function on booking show page
 const fitMapToMarkers = (map, markers) => {
@@ -17,11 +16,16 @@ const addMarkerToMap = (map) => {
   console.log('mapElement', mapElement);
   
     const markers = JSON.parse(mapElement.dataset.markers);
-    console.log('markers', markers);
-    
+    console.log('markers', typeof markers, markers);
     markers.forEach((marker) => {
+    console.log('each marker', typeof marker, marker);
+    // Create a HTML element for your custom marker
+    const element = document.createElement('div');
+    element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    console.log('markers url', marker.image_url);
 
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(element)
       .setLngLat([ marker.lon, marker.lat ])
       .addTo(map);
     });
@@ -53,6 +57,7 @@ const initMapbox = () => {
     });
       // Add the control to the map.
       // map.addControl(geolocate);
+
       console.log("mapElement.dataset:", mapElement.dataset);
       if (mapElement.dataset.myid != null) {
         map.addControl(geolocate);
@@ -60,36 +65,28 @@ const initMapbox = () => {
       }
       // here is for one customer marker and several mechanic markers for show page for customer
       else if (mapElement.dataset.customer != null) {
-        // Set an event listener that fires
-        // when a geolocate event occurs.
-        geolocate.on('geolocate', function(e) {
-          let customerLon = e.coords.longitude;
-          let customerLat = e.coords.latitude
-          let position = [customerLon, customerLat];
-          console.log('customer location:',position);
-          // save current_location in localstrorage to be able to use in show.html.erb page
-          localStorage.setItem("current_location",position);
-          console.log("I saved it")
-        });
-
         // add customer_marker 
         console.log('customer_marker', localStorage.getItem("current_location"))
         console.log('customer_marker', typeof localStorage.getItem("current_location").split(",").map(Number))
-        const customer_marker = localStorage.getItem("current_location").split(",").map(Number)
+        customer_marker = localStorage.getItem("current_location").split(",").map(Number)
         new mapboxgl.Marker({
           color: '#63488C'
         })
         .setLngLat([ customer_marker[0], customer_marker[1] ])
-        .addTo(map);
+        // .addTo(map);
+
         // add mechanics markers
           map.flyTo({
             center: [
               customer_marker[0], 
               customer_marker[1] 
             ],
-            zoom: 10,
+            zoom: 11,
             essential: true // this animation is considered essential with respect to prefers-reduced-motion
           });
+          // make the customer marker animated
+          pulsingMarker(map, customer_marker)
+          // add several mechanic markers
           addMarkerToMap(map);
       };
         // add one mechanic marker and one customer marker in show page for mechanic
@@ -97,7 +94,7 @@ const initMapbox = () => {
           mechanic_marker = JSON.parse(mapElement.dataset.marker)
           console.log('mechanic_marker', typeof mechanic_marker, mechanic_marker);
 
-          const customerMarker = JSON.parse(mapElement.dataset.customer_marker)
+          customerMarker = JSON.parse(mapElement.dataset.customer_marker)
           console.log('customerMarker', typeof customerMarker, customerMarker);
 
           map.flyTo({
@@ -113,8 +110,8 @@ const initMapbox = () => {
           new mapboxgl.Marker({
             color: '#63488C'
           })
-          .setLngLat([parseFloat(customerMarker[0].lon), parseFloat(customerMarker[0].lat) ])
-          .addTo(map);
+          .setLngLat([ parseFloat(customerMarker[0].lon), parseFloat(customerMarker[0].lat) ])
+          // .addTo(map);
 
           // add mechanic marker and color it purple
           new mapboxgl.Marker({
@@ -124,13 +121,27 @@ const initMapbox = () => {
           // .addTo(map);
 
           // get direction when click on map anywhere
-          getDirection(map, mechanic_marker);
+          getDirection(map, mechanic_marker, customerMarker);
         }
+
+        // Set an event listener that fires
+        // when a geolocate event occurs.
+        geolocate.on('geolocate', function(e) {
+          let customerLon = e.coords.longitude;
+          let customerLat = e.coords.latitude
+          let position = [customerLon, customerLat];
+          console.log('customer location:',position);
+          // save current_location in localstrorage to be able to use in show.html.erb page
+          localStorage.setItem("current_location",position);
+          console.log("I saved it")
+        });
   }
 };
 
 // these three variables are for direction.js
 let map;
 let mechanic_marker;
+let customerMarker;
+let customer_marker;
 
 export { initMapbox };
