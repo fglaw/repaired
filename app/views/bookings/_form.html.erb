@@ -1,12 +1,14 @@
 <%= simple_form_for [@repair, @booking], html: {class: 'form'} do |f| %>
   <div class="form-group">
-    <div id="photos" class="p-0 m-0">
-      <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none hidden', id: 'photos-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload photos'  %>
-      <%= image_tag "", class: "hidden", id: "photos-preview" %>
-    </div>
+      <div id="photos" class="mb-3">
+        <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'd-none hidden', id: 'photos-input'}, label_html: { class: 'upload-photo'}, label: '📷 Upload photos'  %>
+        <%= image_tag "", class: "hidden", id: "photos-preview" %>
+      </div>
+      <%= f.input :location, input_html: { id: 'location', type: "hidden", value: :location }, label: false %>
 
-    <div class="col-sm-3 d-flex justify-content-center">
-      <%= f.submit class: 'btn-lilac mr-1 ml-1', value: 'Book now'  %>
-    </div>
+
+      <div class="col-sm-3 mt-3 d-flex justify-content-center">
+        <%= f.submit class: 'btn btn-flat btn-lg', value: 'Book now', :disabled => true , id: 'book-button' %>
+      </div>
   </div>
 <% end %>

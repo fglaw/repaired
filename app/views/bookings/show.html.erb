@@ -1,10 +1,11 @@
 <% if !current_user.user_mechanic %>
-
   <div class="map-show">
     <div id="map"
       style="width: 100%; height: 580px;"
       data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      data-customer_marker="<%= @customer_marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-customer="customer_map">
     </div>
 
 <% else %>
@@ -12,15 +13,23 @@
     <div id="map"
       style="width: 100%; height: 580px;"
       data-marker="<%= @mechanic_marker.to_json %>"
+      data-customer_marker="<%= @customer_marker.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       data-mechanic="mechanic_map">
     </div>
 <% end %>
 
-<div class="badge-time" id="time">
-  <h5>15</h5>
-  <p>min</p>
-</div>
+<% if current_user.user_mechanic %>
+  <div class="badge-time" id="time" role="button" aria-pressed="false">
+    <h5>0</h5>
+    <p>min</p>
+  </div>
+<% else %>
+  <div class="badge-time" id="time">
+    <h5>25</h5>
+    <p>min</p>
+  </div>
+<% end %>
 
 <div class="badge-status d-flex align-items-center justify-content-center">
   <p> <%= @booking.status %> </p>

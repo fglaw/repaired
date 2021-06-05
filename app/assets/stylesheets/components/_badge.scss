@@ -28,6 +28,16 @@
   h5 {
     margin: 0;
   }
+
+  cursor: pointer;
+  outline: none;
+}
+
+.badge-time:hover {background-color: #C4BBFA}
+
+.badge-time:active {
+  background-color: #C4BBFA;
+  box-shadow: 0 0 15px #666;
 }
 
 .badge-status {

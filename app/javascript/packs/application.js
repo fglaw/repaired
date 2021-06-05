@@ -10,6 +10,7 @@ import "channels"
 import { initMapbox } from '../plugins/init_mapbox';
 import { previewImageOnFileSelect } from "../components/photo_preview";
 import {dashboardMaps} from '../plugins/dashboard_maps';
+import { getLocation } from '../plugins/get_location';
 
 
 
@@ -31,6 +32,7 @@ import "bootstrap";
 
 
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
@@ -38,4 +40,7 @@ document.addEventListener('turbolinks:load', () => {
   const maps = document.querySelectorAll(".map")
   dashboardMaps(maps)
   previewImageOnFileSelect();
+
+  console.log("-----call getLocation")
+  getLocation();
 });
