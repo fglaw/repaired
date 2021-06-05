@@ -1,16 +1,20 @@
   <%= link_to repair_booking_path(booking.repair, booking), class: "no-text-deco" do %>
-  <div class="border bg-secondary shadow">
+  <div class="border-0">
     <%#  %>
-    <div class="d-flex bg-primary p-2 justify-content-between" >
+    <div class="d-flex bg-primary pb-1 pt-1 pl-2 pr-2 justify-content-between" >
       <%# booking.repair.image %>
       <div>
-        <strong>
+        <div>
           <%= booking.repair.repair_type %>
-        </strong>
+        </div>
+        <div class="text-dark text-left"><small>
+            <%= booking.created_at.strftime("%d/%m/%Y") %>
+          </small>        </div>
       </div>
-      <div></div>
-      <div><%= booking.created_at.strftime("%d/%m/%Y") %>
-        - <%= booking.repair.price %>€
+      <div class="align-self-center">
+        <strong>
+          <%= booking.repair.price %>€
+        </strong>
       </div>
     </div>
   </div>
