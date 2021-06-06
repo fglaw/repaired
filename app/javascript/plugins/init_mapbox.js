@@ -118,8 +118,8 @@ const initMapbox = () => {
         geolocate.on('geolocate', function(e) {
           let customerLon = e.coords.longitude;
           let customerLat = e.coords.latitude
-          let position = [customerLon, customerLat];
-          console.log('customer location:',position);
+          let position = [customerLat, customerLon];
+          console.log('customer location:',typeof position);
           // save current_location in localstrorage to be able to use in show.html.erb page
           localStorage.setItem("current_location",position);
           console.log("I saved it")
