@@ -7,8 +7,8 @@ var initialRadius = 8;
 var radius = initialRadius;
 var maxRadius = 18;
 
-const pulsingMarker = (map, customer_marker) => {
-    console.log(customer_marker[0]);
+const pulsingMarker = (map, customerMarker) => {
+    console.log(customerMarker);
      console.log('---pulsingMarker is in init_mapbox')
      map.on('load', () => {
           map.addSource('point', {
@@ -16,8 +16,8 @@ const pulsingMarker = (map, customer_marker) => {
             "data": {
                 "type": "Point",
                 "coordinates": [
-                  customer_marker[0],
-                  customer_marker[1]
+                  customerMarker[0].lon,
+                  customerMarker[0].lat
                 ]
             }
           });

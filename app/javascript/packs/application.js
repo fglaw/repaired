@@ -41,4 +41,5 @@ document.addEventListener('turbolinks:load', () => {
   dashboardMaps(maps)
   previewImageOnFileSelect();
   getLocation();
+  console.log('getlocation!')
 });

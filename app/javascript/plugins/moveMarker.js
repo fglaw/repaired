@@ -1,5 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { pulsingMarker } from './pulsing'
 
 
 const moveMarker = (map, route, mechanic_marker) => {
@@ -8,7 +9,9 @@ const moveMarker = (map, route, mechanic_marker) => {
     console.log('mechanic_marker with 0', typeof mechanic_marker[0], mechanic_marker[0]);
     console.log('mechanic_marker', typeof mechanic_marker, mechanic_marker);
     console.log('mechanic_marker', mechanic_marker[0].image_url);
+    // const mechanicMarker = [ mechanic_marker[0].lon, mechanic_marker[0].lat ]
     let marker = null;
+    // marker = pulsingMarker(map, mechanicMarker);
     marker = new mapboxgl.Marker({
         color: 'red'
     })
@@ -35,7 +38,7 @@ const moveMarker = (map, route, mechanic_marker) => {
                 marker = new mapboxgl.Marker(element)
                   .setLngLat([ route[i][0], route[i][1] ])
                   .addTo(map)
-          }, 600 * i);
+          }, 1000 * i);
     }
 };
 

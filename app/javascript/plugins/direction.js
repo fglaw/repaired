@@ -7,7 +7,7 @@ const getDirection = (map, mechanic_marker, customerMarker) => {
     // initialize the map canvas to interact with later
     var canvas = map.getCanvasContainer();
     var start = [ mechanic_marker[0].lon, mechanic_marker[0].lat ];
-    var end = [parseFloat(customerMarker[0].lon), parseFloat(customerMarker[0].lat)]
+    var end = [ customerMarker[0].lon, customerMarker[0].lat ]
     // create a function to make a directions request
     const getRoute = (end) => {
         // make a directions request using cycling profile
@@ -91,7 +91,7 @@ const getDirection = (map, mechanic_marker, customerMarker) => {
   
         // Add starting point to the map
         map.addLayer({
-            id: 'point',
+            id: 'start',
             type: 'circle',
             source: {
                 type: 'geojson',
@@ -134,7 +134,7 @@ const getDirection = (map, mechanic_marker, customerMarker) => {
             },
             paint: {
                 'circle-radius': 10,
-                'circle-color': '#63488C'
+                'circle-color': '#A3A6D8'
             }
         });
         // show the direction when map.on
