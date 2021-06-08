@@ -1,18 +1,24 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { pulsingMarker } from './pulsing'
 
 
-const moveMarker = (map, route) => {
+const moveMarker = (map, route, mechanic_marker) => {
     console.log('moveMarker function is calling!')
     console.log('route', route);
+    console.log('mechanic_marker with 0', typeof mechanic_marker[0], mechanic_marker[0]);
+    console.log('mechanic_marker', typeof mechanic_marker, mechanic_marker);
+    console.log('mechanic_marker', mechanic_marker[0].image_url);
+    // const mechanicMarker = [ mechanic_marker[0].lon, mechanic_marker[0].lat ]
     let marker = null;
+    // marker = pulsingMarker(map, mechanicMarker);
     marker = new mapboxgl.Marker({
         color: 'red'
     })
           .setLngLat([ route[0][0], route[0][1] ])
           .addTo(map)
+
     let length = route.length;
-    // let i;
     
     for( let i = 0; i < length; i++) {
         marker.remove()
@@ -22,15 +28,17 @@ const moveMarker = (map, route) => {
 
             setTimeout(function(){
                 console.log('---- i ', i);
-
+                // Create a HTML element to make this icon to bik
+                const element = document.createElement('div');
+                element.className = 'marker';
+                element.style.backgroundImage =
+                'url(https://res.cloudinary.com/ddk6eqs6l/image/upload/v1622891551/i4ltbqhwlljnfxiqzvp1.png)';
+                element.style.backgroundSize = '100%';
                 marker.remove()
-                marker = new mapboxgl.Marker({
-                    color: '#A3A6D8'
-                })
-                .setLngLat([ route[i][0], route[i][1] ])
-                .remove()
-                marker.addTo(map)
-          }, 600 * i);
+                marker = new mapboxgl.Marker(element)
+                  .setLngLat([ route[i][0], route[i][1] ])
+                  .addTo(map)
+          }, 1000 * i);
     }
 };
 

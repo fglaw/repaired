@@ -14,13 +14,15 @@ class BookingsController < ApplicationController
     @review = Review.new
 
     # Mechanic markers in show page for customer
-    @mechanics_locations = User.where(user_mechanic: true)[0..5].map { |user| user.current_location }
+    @mechanics_locations = User.where(user_mechanic: true)[0..11].map { |user| user.current_location }
     @markers = []
     @mechanics_locations.each do |location|
+      # JSON parse => string of array to array
         array = JSON.parse(location)
         @markers << {
           lon: array.last,
-          lat: array.first
+          lat: array.first,
+          image_url: helpers.asset_url("https://res.cloudinary.com/ddk6eqs6l/image/upload/v1622891551/i4ltbqhwlljnfxiqzvp1.png")
         }
     end
     @markers
@@ -35,17 +37,21 @@ class BookingsController < ApplicationController
 
     # customer marker 
     @customer_marker = []
-    customer_array = @booking.location.split(",")
+    customer_array = JSON.parse(@booking.location)
+    # raise
     if @booking.location != ""
       @customer_marker << {
-        lon: customer_array.first,
-        lat: customer_array.last
+        lon: customer_array.last,
+        lat: customer_array.first,
+        bookingid: @booking.id
       }
+      @customer_marker
     else 
       @customer_marker = {
         lng: 13.4050,
         lat: 52.5200
       }
+      @customer_marker
     end 
   end
 

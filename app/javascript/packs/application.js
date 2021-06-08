@@ -40,7 +40,6 @@ document.addEventListener('turbolinks:load', () => {
   const maps = document.querySelectorAll(".map")
   dashboardMaps(maps)
   previewImageOnFileSelect();
-
-  console.log("-----call getLocation")
   getLocation();
+  console.log('getlocation!')
 });
