@@ -84,8 +84,7 @@ class BookingsController < ApplicationController
       authorize @booking
       if params["status"] == "declined"
 
-        @booking.mechanic = random_mechanic
-        @booking.save
+        @booking.destroy
       redirect_to dashboard_path
       elsif params["status"] == "completed"
 
