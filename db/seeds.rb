@@ -9,7 +9,7 @@ require 'uri'
 require "faker"
 require "random-location"
 
- 
+
 
 def mechanic?
   rand(3) === 2
@@ -19,11 +19,11 @@ def set_status
   i = rand(6)
     if i == 0
       "accepted"
-    elsif i == 1 
+    elsif i == 1
       "pending"
     else
       "completed"
-    end  
+    end
 end
 
 def generate_booking_user
@@ -45,7 +45,7 @@ puts 'database is clean'
 user_photo_url = "https://kitt.lewagon.com/placeholder/users/random"
 
 puts "random customer creation"
-2.times do 
+2.times do
   User.create!(
     email: Faker::Internet.email,
     password: "123456",
@@ -63,7 +63,7 @@ customer = User.create!(
     email: "customer@user.com",
     password: "123456",
     name: "Hans Müller",
-    user_mechanic: false, 
+    user_mechanic: false,
     current_location: RandomLocation.near_by(52.5200, 13.4050, 10000)
   )
 
@@ -89,7 +89,7 @@ repair1 = Repair.create!(
     price: 12,
     duration: 20,
     level: 1,
-    image_url: "https://images.unsplash.com/photo-1590847003083-cb5f2380888a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
+    image_url: "https://source.unsplash.com/nLtIx9xmGxE",
   )
 Repair.create!(
   repair_type: 'Gears Alignment',
@@ -105,7 +105,7 @@ Repair.create!(
     level: 3,
     image_url: "https://images.unsplash.com/photo-1592222166121-93437e78d8d0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80",
   )
-  
+
   repair1 = Repair.create!(
     repair_type: 'Brake tuning',
     price: 10,
@@ -121,7 +121,7 @@ Repair.create!(
   level: 1,
   image_url: "https://images.unsplash.com/photo-1481106839235-a2c71e2564de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1652&q=80",
   )
-      
+
 Repair.create!(
   repair_type: 'Health Check',
   price: 25,
@@ -151,7 +151,7 @@ Booking.create!(
   puts "creating bookings for fabian fixit"
 
 
-# adding 1 pending booking for fabian 
+# adding 1 pending booking for fabian
     loca_array = RandomLocation.near_by(52.5200, 13.4050, 10000)
     Booking.create!(
       location: loca_array[0].to_s + ", " + loca_array[1].to_s,
@@ -160,7 +160,7 @@ Booking.create!(
       repair_id: Repair.all.sample.id,
       mechanic_id: mechanic.id
    )
-  
+
 
   10.times do
     Booking.create!(
