@@ -1,0 +1,68 @@
+// wrench
+@mixin wrench($rotateAngle, $duration: 3, $delay: 0) {
+    @keyframes wrench {
+      from {opacity: 0;}
+      6% {transform: rotate(-$rotateAngle + deg); opacity: 1;}
+      12% {transform: rotate($rotateAngle + deg)}
+      18% {transform: rotate(-$rotateAngle + deg)}
+      24% {transform: rotate($rotateAngle + deg)}
+      30% {transform: rotate(-$rotateAngle + deg); opacity: 1;}
+      33% { transform: rotate(0deg); opacity: 0; }
+    }
+    animation: wrench $duration  + s $delay + s linear infinite;
+}
+  
+.wrench {
+opacity: 0;
+color: black;
+top: 0px;
+left: -45px;
+transform-origin: 55% 45%;
+@include wrench(30, 3, 1);
+}
+
+// location
+@mixin location($rotateAngle, $duration: 3, $delay: 0) {
+    @keyframes location {
+      from {opacity: 0;}
+      6% {transform: rotate(-$rotateAngle + deg); opacity: 1;}
+      12% {transform: rotate($rotateAngle + deg)}
+      18% {transform: rotate(-$rotateAngle + deg)}
+      24% {transform: rotate($rotateAngle + deg)}
+      30% {transform: rotate(-$rotateAngle + deg); opacity: 1;}
+      33% { transform: rotate(0deg); opacity: 0; }
+    }
+    animation: location $duration  + s $delay + s linear infinite;
+}
+  
+.location {
+opacity: 0;
+color: black;
+top: 0px;
+left: -45px;
+transform-origin: 55% 45%;
+@include location(30, 3, 1);
+}
+
+// images
+@mixin images($rotateAngle, $duration: 3, $delay: 0) {
+    @keyframes images {
+      from {opacity: 0;}
+      6% {transform: rotate(-$rotateAngle + deg); opacity: 1;}
+      12% {transform: rotate($rotateAngle + deg)}
+      18% {transform: rotate(-$rotateAngle + deg)}
+      24% {transform: rotate($rotateAngle + deg)}
+      30% {transform: rotate(-$rotateAngle + deg); opacity: 1;}
+      33% { transform: rotate(0deg); opacity: 0; }
+    }
+    animation: images $duration  + s $delay + s linear infinite;
+}
+  
+.images {
+opacity: 0;
+color: black;
+top: 0px;
+left: -45px;
+transform-origin: 55% 45%;
+@include images(30, 3, 1);
+}
