@@ -85,14 +85,14 @@ Repair.destroy_all
 puts "Creating repairs"
 
 repair1 = Repair.create!(
-    repair_type: 'Flat Tyre',
+    repair_type: 'Flat tyre',
     price: 12,
     duration: 20,
     level: 1,
     image_url: "https://source.unsplash.com/nLtIx9xmGxE",
   )
 Repair.create!(
-  repair_type: 'Gears Alignment',
+  repair_type: 'Gears alignment',
   price: 15,
   duration: 30,
   level: 2,
@@ -123,7 +123,7 @@ Repair.create!(
   )
 
 Repair.create!(
-  repair_type: 'Health Check',
+  repair_type: 'Health check',
   price: 25,
   duration: 30,
   level: 2,
@@ -131,7 +131,7 @@ Repair.create!(
 )
 
 Repair.create!(
-  repair_type: 'Unkonwn Issue',
+  repair_type: 'Unknown issue',
   price: 50,
   duration: 60,
   level: 3,
