@@ -76,7 +76,7 @@ mechanic = User.create!(
     name: "Fabian Fixit",
     user_mechanic: true,
     level: 3,
-    current_location: "[52.592879, 13.431700]",
+    current_location: "[52.48197279116654, 13.413258005775425]",
     rating: 4.8
   )
 
