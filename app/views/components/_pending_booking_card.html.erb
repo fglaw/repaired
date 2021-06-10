@@ -32,10 +32,10 @@
               <% if booking.status == "pending" %>
                 <div class="d-flex justify-content-between">
                   <%= link_to repair_booking_path(booking.repair, booking, status: "accepted"), method: :patch, class: "no-text-deco" do %>
-                    <h6 class="text-success">accept</h6>
+                    <small class="p-1 btn btn-success text-dark">accept</small>
                   <% end %>
                   <%= link_to repair_booking_path(booking.repair, booking, status: "declined"), method: :patch, class: "no-text-deco" do %>
-                    <h6 class="text-warning">decline</h6>
+                    <small class="p-1 btn btn-warning text-dark">decline</small>
                   <% end %>
                 </div>
               <% end %>
