@@ -26,6 +26,7 @@ class BookingsController < ApplicationController
         }
     end
     @markers
+    
     # Mechanic marker in show page for the mechanic
     @mechanic_marker = []
     arr = JSON.parse(current_user.current_location)
@@ -38,7 +39,6 @@ class BookingsController < ApplicationController
     # customer marker 
     @customer_marker = []
     customer_array = JSON.parse(@booking.location)
-    # raise
     if @booking.location != ""
       @customer_marker << {
         lon: customer_array.last,
@@ -52,7 +52,7 @@ class BookingsController < ApplicationController
         lat: 52.5200
       }
       @customer_marker
-    end 
+    end
   end
 
   def new

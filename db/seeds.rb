@@ -80,6 +80,22 @@ mechanic = User.create!(
     rating: 4.8
   )
 
+puts "random mechanics creation"
+# create 5 mechanics nearby customer marker (in this case near by Le Wagon germany)
+5.times do
+  mechanics = User.create!(
+    email: Faker::Internet.email,
+    password: "123456",
+    name: "names does not matter",
+    user_mechanic: true,
+    level: 1,
+    current_location: RandomLocation.near_by(52.506747, 13.390752, 1000),
+    rating: 5.0
+  )
+end
+
+
+
 puts "Cleaning repairs"
 Repair.destroy_all
 puts "Creating repairs"
