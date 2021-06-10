@@ -3,4 +3,4 @@ meta_title: "repaired - Anywhere repair!"
 meta_description: "Anywhere repair! "
 meta_type: "repairing broken bikes and related things"
 meta_url: "https://www.repaired-now.com/"
-meta_image: "cover.jpeg" # should exist in `app/assets/images/`
+meta_image: "cover.jpg" # should exist in `app/assets/images/`

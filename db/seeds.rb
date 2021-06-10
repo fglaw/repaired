@@ -80,19 +80,35 @@ mechanic = User.create!(
     rating: 4.8
   )
 
+puts "random mechanics creation"
+# create 5 mechanics nearby customer marker (in this case near by Le Wagon germany)
+5.times do
+  mechanics = User.create!(
+    email: Faker::Internet.email,
+    password: "123456",
+    name: "names does not matter",
+    user_mechanic: true,
+    level: 1,
+    current_location: RandomLocation.near_by(52.506747, 13.390752, 1000),
+    rating: 5.0
+  )
+end
+
+
+
 puts "Cleaning repairs"
 Repair.destroy_all
 puts "Creating repairs"
 
 repair1 = Repair.create!(
-    repair_type: 'Flat Tyre',
+    repair_type: 'Flat tyre',
     price: 12,
     duration: 20,
     level: 1,
     image_url: "https://source.unsplash.com/nLtIx9xmGxE",
   )
 Repair.create!(
-  repair_type: 'Gears Alignment',
+  repair_type: 'Gears alignment',
   price: 15,
   duration: 30,
   level: 2,
@@ -123,7 +139,7 @@ Repair.create!(
   )
 
 Repair.create!(
-  repair_type: 'Health Check',
+  repair_type: 'Health check',
   price: 25,
   duration: 30,
   level: 2,
@@ -131,7 +147,7 @@ Repair.create!(
 )
 
 Repair.create!(
-  repair_type: 'Unkonwn Issue',
+  repair_type: 'Unknown issue',
   price: 50,
   duration: 60,
   level: 3,

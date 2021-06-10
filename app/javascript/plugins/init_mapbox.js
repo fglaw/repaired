@@ -14,7 +14,7 @@ const fitMapToMarkers = (map, markers) => {
 const addMarkerToMap = (map) => {
   const mapElement = document.getElementById('map');
   const markers = JSON.parse(mapElement.dataset.markers);
-  
+  console.log('how many markers?', markers.length);
   markers.forEach((marker) => {
     
     // Create a HTML element for your custom marker
@@ -71,7 +71,7 @@ const initMapbox = () => {
               customerMarker[0].lon,
               customerMarker[0].lat
             ],
-            zoom: 10,
+            zoom: 12,
             essential: true // this animation is considered essential with respect to prefers-reduced-motion
           });
           // make the customer marker animated

@@ -3,18 +3,19 @@
   <h1>
     <p>What’s the problem?</p>
   </h1>
+  <!-- Category -->
   <h2>
     <p>Choose one category.</p>
   </h2>
   <div class="d-flex flex-wrap">
     <% @repairs.each do |repair| %>
         <%= link_to repair_path(repair), class:'text-decoration-none' do %>
-          <div class="card-repair m-3 ">
+          <div class="card-repair m-3" data-aos="zoom-in">
             <% if repair.image_url.present? %>
               <img src="<%= repair.image_url %>" >
               <div class="card-repair-infos mt-1 p-2 d-flex flex-column card-link">
                 <h3 class="mt-1"><%= repair.repair_type %></h3>
-                <p>Repair Duration: <%= repair.duration %> min <br>Price: <strong>€ <%= repair.price %>,00</strong></p>
+                <p>Repair Duration: <%= repair.duration %> min <br>Price: <strong><%= repair.price %>,00 €</strong></p>
                 <div class="d-flex ml-20px">
                   <i class="fas fa-arrow-right fa-lg"></i>
                 </div>
