@@ -10,7 +10,7 @@
   <div class="d-flex flex-wrap">
     <% @repairs.each do |repair| %>
         <%= link_to repair_path(repair), class:'text-decoration-none' do %>
-          <div class="card-repair m-3 ">
+          <div class="card-repair m-3" data-aos="zoom-in">
             <% if repair.image_url.present? %>
               <img src="<%= repair.image_url %>" >
               <div class="card-repair-infos mt-1 p-2 d-flex flex-column card-link">

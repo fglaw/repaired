@@ -11,6 +11,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { previewImageOnFileSelect } from "../components/photo_preview";
 import {dashboardMaps} from '../plugins/dashboard_maps';
 import { getLocation } from '../plugins/get_location';
+import { aos } from '../plugins/aos';
 
 
 
@@ -41,5 +42,5 @@ document.addEventListener('turbolinks:load', () => {
   dashboardMaps(maps)
   previewImageOnFileSelect();
   getLocation();
-  console.log('getlocation!')
+  aos();
 });
