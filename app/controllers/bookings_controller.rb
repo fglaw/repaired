@@ -72,8 +72,12 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     # @booking.location = current_user.current_location
     @booking.mechanic_id = User.where(name: "Fabian Fixit").first.id
-      if @booking.save
-        redirect_to repair_booking_path(@repair, @booking), notice: 'Booking was successfully created'
+      if @booking.photos.present? 
+        if @booking.save
+          redirect_to repair_booking_path(@repair, @booking), notice: 'Booking was successfully created'
+        else
+          render :new
+        end
       else
         render :new
       end
