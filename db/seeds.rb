@@ -57,6 +57,14 @@ puts "random customer creation"
   )
 end
 
+puts "attaching photos to users"
+
+User.all.each do |user|
+  file = URI.open(user_photo_url)
+  user.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
+  user.save
+end
+
 puts "Creating user 1 (Customer)"
 
 customer = User.create!(
@@ -67,7 +75,9 @@ customer = User.create!(
     current_location: RandomLocation.near_by(52.5200, 13.4050, 10000)
   )
 
-
+file_cus = URI.open("https://kitt.lewagon.com/placeholder/users/Jonathan-Parmley")
+customer.photo.attach(io: file_cus, filename: "user.jpg", content_type: 'image/jpg')
+customer.save
 
 puts "Creating user 2 (Mechanic)"
 mechanic = User.create!(
@@ -80,6 +90,10 @@ mechanic = User.create!(
     rating: 4.8
   )
 
+file_mec = URI.open("https://kitt.lewagon.com/placeholder/users/fabiludos")
+mechanic.photo.attach(io: file_mec, filename: "user.jpg", content_type: 'image/jpg')
+mechanic.save
+
 puts "Creating user 3 (Customer)"
 
 customer2 = User.create!(
@@ -89,6 +103,10 @@ customer2 = User.create!(
     user_mechanic: false,
     current_location: RandomLocation.near_by(52.5200, 13.4050, 10000)
   )
+
+file_cus2 = URI.open("https://kitt.lewagon.com/placeholder/users/thidru69")
+customer2.photo.attach(io: file_cus2, filename: "user.jpg", content_type: 'image/jpg')
+customer2.save
 
 puts "random mechanics creation"
 # create 5 mechanics nearby customer marker (in this case near by Le Wagon germany)
@@ -198,16 +216,6 @@ Booking.create!(
    )
   end
 
-
-
-
-puts "attaching photos to users"
-
-User.all.each do |user|
-  file = URI.open(user_photo_url)
-  user.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
-  user.save
-end
 
 puts 'Seed complete'
 # https://source.unsplash.com/800x600/?broke,bike
