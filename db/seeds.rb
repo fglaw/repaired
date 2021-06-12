@@ -57,7 +57,7 @@ puts "random customer creation"
   )
 end
 
-puts "Creating user 1"
+puts "Creating user 1 (Customer)"
 
 customer = User.create!(
     email: "customer@user.com",
@@ -69,7 +69,7 @@ customer = User.create!(
 
 
 
-puts "Creating user 2"
+puts "Creating user 2 (Mechanic)"
 mechanic = User.create!(
     email: "mechanic@user.com",
     password: "123456",
@@ -78,6 +78,16 @@ mechanic = User.create!(
     level: 3,
     current_location: "[52.48197279116654, 13.413258005775425]",
     rating: 4.8
+  )
+
+puts "Creating user 3 (Customer)"
+
+customer2 = User.create!(
+    email: "customer2@user.com",
+    password: "123456",
+    name: "James Smith",
+    user_mechanic: false,
+    current_location: RandomLocation.near_by(52.5200, 13.4050, 10000)
   )
 
 puts "random mechanics creation"
@@ -159,8 +169,8 @@ puts 'Creating booking 1'
 Booking.create!(
     location: RandomLocation.near_by(52.5200, 13.4050, 10000),
     status: "accepted",
-    user_id: customer.id,
-    repair_id: Repair.all.first.id,
+    user_id: customer2.id,
+    repair_id: Repair.all.second.id,
     mechanic_id: mechanic.id
   )
 
